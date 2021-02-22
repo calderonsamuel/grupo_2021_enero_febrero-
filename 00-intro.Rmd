@@ -1,4 +1,6 @@
-# Introduction {#intro}
+# Introducción {#intro}
+
+Pueden encontrar el repostitorio de este libro digital en <https://github.com/calderonsamuel/grupo_2021_enero_febrero->.
 
 You can label chapter and section titles using `{#label}` after them, e.g., we can reference Chapter \@ref(intro). If you do not manually label them, there will be automatic labels anyway, e.g., Chapter \@ref(methods).
 
