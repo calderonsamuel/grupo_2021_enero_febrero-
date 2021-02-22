@@ -38,9 +38,27 @@ Región de la que proviene:
 Experiencia laboral:
 Temas de interés:
 
+## Sandra Cerna
+
+Experiencia previa con código:
+Experiencia previa de análisis de datos:
+Formación profesional:
+Región de la que proviene:
+Experiencia laboral:
+Temas de interés:
+
 ## Antenor Escudero
 
 Politólogo de la Universidad Antonio Ruiz de Montoya. Diplomado en Economía del Comportamiento, por la Universidad del Pacífico. Estudiante de Maestria en Ciencias Políticas y Relaciones Internacionales, especialización en Política Comparada, por la Pontificia Universidad Católica del Perú. Antes del taller no ha tenido experiencia en ningún lenguaje de programación ni en análisis de datos. Tiene experiencia laboral en el sector público, privado y de manera independiente, siendo las más recientes en el Centro Nacional de Planeamiento Estratégico - CEPLAN, Profesor Particular en Tu Profe En Casa, Asistente de clase de Teoría Política II y Temas de Ciencia Política en la Escuela Académico-Profesional de Ciencia Política, Universidad Antonio Ruiz de Montoya. Tiene interés en los temas de comportamiento político, psicología política, desigualdad, clases sociales, participación ciudadana, entre otros.
+
+## Diana Quispe
+
+Experiencia previa con código:
+Experiencia previa de análisis de datos:
+Formación profesional:
+Región de la que proviene:
+Experiencia laboral:
+Temas de interés:
 
 ## Christian Reyes
 

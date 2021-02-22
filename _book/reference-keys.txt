@@ -19,7 +19,9 @@ fig:chris-distritos4
 fig:chris-org1
 fig:chris-org2
 isabel-calderon
+sandra-cerna
 antenor-escudero
+diana-quispe
 christian-reyes
 samuel-calderon
 intro
@@ -39,3 +41,5 @@ mujeres-y-organizaciones-políticas-nivel-de-participación-de-mujeres-desde-las
 elecciones-congresales-de-1995
 elecciones-congresales-de-2016
 conclusion
+trabajo-de-diana
+trabajo-de-sandra
