@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Capítulo 4 ¿La política es ancha y ajena?: Participación política de la mujer en las elecciones congresales | Entrenamiento en productos de datos: R Markdown</title>
+  <meta name="description" content="Este libro es una compilación de reportes individuales trabajados durante el verano 2021 en el Taller de Elaboración de productos de datos dictado por Samuel Calderon." />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Capítulo 4 ¿La política es ancha y ajena?: Participación política de la mujer en las elecciones congresales | Entrenamiento en productos de datos: R Markdown" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Este libro es una compilación de reportes individuales trabajados durante el verano 2021 en el Taller de Elaboración de productos de datos dictado por Samuel Calderon." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Capítulo 4 ¿La política es ancha y ajena?: Participación política de la mujer en las elecciones congresales | Entrenamiento en productos de datos: R Markdown" />
+  
+  <meta name="twitter:description" content="Este libro es una compilación de reportes individuales trabajados durante el verano 2021 en el Taller de Elaboración de productos de datos dictado por Samuel Calderon." />
+  
+
+<meta name="author" content="Samuel Calderon, Isabel Calderon, Antenor Escudero, Christian Reyes" />
+
+
+<meta name="date" content="2021-02-22" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="ausentismo-en-las-elecciones-congresales-2020.html"/>
+<link rel="next" href="bibliografia.html"/>
+<script src="libs/header-attrs-2.6.6/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Entrenamiento en productos de datos: R Markdown</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Presentación</a></li>
+<li class="chapter" data-level="" data-path="sobre-los-autores.html"><a href="sobre-los-autores.html"><i class="fa fa-check"></i>Sobre los autores</a>
+<ul>
+<li class="chapter" data-level="0.1" data-path="sobre-los-autores.html"><a href="sobre-los-autores.html#isabel-calderon"><i class="fa fa-check"></i><b>0.1</b> Isabel Calderon</a></li>
+<li class="chapter" data-level="0.2" data-path="sobre-los-autores.html"><a href="sobre-los-autores.html#antenor-escudero"><i class="fa fa-check"></i><b>0.2</b> Antenor Escudero</a></li>
+<li class="chapter" data-level="0.3" data-path="sobre-los-autores.html"><a href="sobre-los-autores.html#christian-reyes"><i class="fa fa-check"></i><b>0.3</b> Christian Reyes</a></li>
+<li class="chapter" data-level="0.4" data-path="sobre-los-autores.html"><a href="sobre-los-autores.html#samuel-calderon"><i class="fa fa-check"></i><b>0.4</b> Samuel Calderon</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="2" data-path="trabajo-de-fiorella.html"><a href="trabajo-de-fiorella.html"><i class="fa fa-check"></i><b>2</b> Trabajo de Fiorella</a></li>
+<li class="chapter" data-level="3" data-path="ausentismo-en-las-elecciones-congresales-2020.html"><a href="ausentismo-en-las-elecciones-congresales-2020.html"><i class="fa fa-check"></i><b>3</b> Ausentismo en las Elecciones Congresales 2020</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="ausentismo-en-las-elecciones-congresales-2020.html"><a href="ausentismo-en-las-elecciones-congresales-2020.html#el-ausentismo-electoral-en-las-elecciones-del-2020"><i class="fa fa-check"></i><b>3.1</b> El Ausentismo Electoral en las Elecciones del 2020</a></li>
+<li class="chapter" data-level="3.2" data-path="ausentismo-en-las-elecciones-congresales-2020.html"><a href="ausentismo-en-las-elecciones-congresales-2020.html#el-ausentismo-electoral-en-lima-metropolitana"><i class="fa fa-check"></i><b>3.2</b> El Ausentismo Electoral en Lima Metropolitana</a></li>
+<li class="chapter" data-level="3.3" data-path="ausentismo-en-las-elecciones-congresales-2020.html"><a href="ausentismo-en-las-elecciones-congresales-2020.html#por-qué-hay-ausentismo-electoral-en-lima"><i class="fa fa-check"></i><b>3.3</b> ¿Por qué hay Ausentismo Electoral en Lima?</a></li>
+<li class="chapter" data-level="3.4" data-path="ausentismo-en-las-elecciones-congresales-2020.html"><a href="ausentismo-en-las-elecciones-congresales-2020.html#conclusiones"><i class="fa fa-check"></i><b>3.4</b> Conclusiones</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html"><i class="fa fa-check"></i><b>4</b> ¿La política es ancha y ajena?: Participación política de la mujer en las elecciones congresales</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#análisis-histórico-desde-las-elecciones-congresales-desde-1995-hasta-2016"><i class="fa fa-check"></i><b>4.1</b> Análisis histórico desde las elecciones congresales desde 1995 hasta 2016</a></li>
+<li class="chapter" data-level="4.2" data-path="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#participación-de-mujeres-en-las-elecciones-congresales-del-2001-por-distrito-electoral"><i class="fa fa-check"></i><b>4.2</b> Participación de mujeres en las elecciones congresales del 2001 por distrito electoral</a></li>
+<li class="chapter" data-level="4.3" data-path="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#participación-de-mujeres-en-las-elecciones-congresales-del-2006-por-distrito-electoral"><i class="fa fa-check"></i><b>4.3</b> Participación de mujeres en las elecciones congresales del 2006 por distrito electoral</a></li>
+<li class="chapter" data-level="4.4" data-path="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#participación-de-mujeres-en-las-elecciones-congresales-del-2011-por-distrito-electoral"><i class="fa fa-check"></i><b>4.4</b> Participación de mujeres en las elecciones congresales del 2011 por distrito electoral</a></li>
+<li class="chapter" data-level="4.5" data-path="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#participación-de-mujeres-en-las-elecciones-congresales-del-2016-por-distrito-electoral"><i class="fa fa-check"></i><b>4.5</b> Participación de mujeres en las elecciones congresales del 2016 por distrito electoral</a></li>
+<li class="chapter" data-level="4.6" data-path="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#mujeres-y-organizaciones-políticas-nivel-de-participación-de-mujeres-desde-las-organizaciones-políticas"><i class="fa fa-check"></i><b>4.6</b> Mujeres y organizaciones políticas: nivel de participación de mujeres desde las organizaciones políticas</a>
+<ul>
+<li class="chapter" data-level="4.6.1" data-path="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#elecciones-congresales-de-1995"><i class="fa fa-check"></i><b>4.6.1</b> Elecciones congresales de 1995</a></li>
+<li class="chapter" data-level="4.6.2" data-path="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#elecciones-congresales-de-2016"><i class="fa fa-check"></i><b>4.6.2</b> Elecciones congresales de 2016</a></li>
+</ul></li>
+<li class="chapter" data-level="4.7" data-path="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#conclusion"><i class="fa fa-check"></i><b>4.7</b> Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="bibliografia.html"><a href="bibliografia.html"><i class="fa fa-check"></i>Bibliografia</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Publicado con bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Entrenamiento en productos de datos: R Markdown</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales" class="section level1" number="4">
+<h1><span class="header-section-number">Capítulo 4</span> ¿La política es ancha y ajena?: Participación política de la mujer en las elecciones congresales</h1>
+<p>Historicamente la representación política esta enmarcada porla elección de representantes mediante el voto ciudadano. No obstante, existen características extrínsecas propios del concepto de ciudadania, por ende, el significado de representación política ha variado producto de los diversos cambios que han ocurrido historicamente.
+Para la elaboración de este ensayo se utilizarán los siguientes paquetes: Tidyverse, readxl y ggthemes. Estos permitirán: manipular, importar, explorar y representar gráficamente el análisis que se pretende mostrar.
+Asimismo, la base de datos que se utilizará fue extratida del portal institucional infogob.pe. Particularmen se extrajo información concerniente a las y los candidatos en las elecciones congresales del año 1995, 2000, 2001, 2006, 2011 y 2016.
+En esta ocasión, la directriz de analisis será a partir del cruce entre las siguientes variables: sexo, organización política y distrito electoral; a fin de mostrar si hubo cambios o no en torno al nivel de participación de mujeres en listas congresales desde 1995 hasta el año 2016.</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb21-2"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb21-3"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggthemes)</span></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb22-1" aria-hidden="true" tabindex="-1"></a>autoridades1995 <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">&quot;data/EG1995_Candidatos_Congresal.xlsx&quot;</span>)</span>
+<span id="cb22-2"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb22-2" aria-hidden="true" tabindex="-1"></a>autoridades1995 <span class="ot">&lt;-</span> autoridades1995 <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span><span class="fu">c</span>(Cargo, <span class="st">`</span><span class="at">N°</span><span class="st">`</span>))</span>
+<span id="cb22-3"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb22-3" aria-hidden="true" tabindex="-1"></a>autoridades1995 <span class="ot">&lt;-</span> autoridades1995 <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(Año<span class="at">_eleccion =</span> <span class="st">&quot;1995&quot;</span>)</span>
+<span id="cb22-4"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb22-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-5"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb22-5" aria-hidden="true" tabindex="-1"></a>autoridades2000 <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">&quot;data/EG2000_Candidatos_Congresal.xlsx&quot;</span>)</span>
+<span id="cb22-6"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb22-6" aria-hidden="true" tabindex="-1"></a>autoridades2000 <span class="ot">&lt;-</span> autoridades2000 <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span><span class="fu">c</span>(Cargo, <span class="st">`</span><span class="at">N°</span><span class="st">`</span>))</span>
+<span id="cb22-7"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb22-7" aria-hidden="true" tabindex="-1"></a>autoridades2000 <span class="ot">&lt;-</span> autoridades2000 <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(Año<span class="at">_eleccion =</span> <span class="st">&quot;2000&quot;</span>)</span>
+<span id="cb22-8"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb22-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-9"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb22-9" aria-hidden="true" tabindex="-1"></a>autoridades2001 <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">&quot;data/EG2001_Candidatos_Congresal.xlsx&quot;</span>)</span>
+<span id="cb22-10"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb22-10" aria-hidden="true" tabindex="-1"></a>autoridades2001 <span class="ot">&lt;-</span> autoridades2001 <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span><span class="fu">c</span>(Cargo, <span class="st">`</span><span class="at">N°</span><span class="st">`</span>))</span>
+<span id="cb22-11"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb22-11" aria-hidden="true" tabindex="-1"></a>autoridades2001 <span class="ot">&lt;-</span> autoridades2001 <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(Año<span class="at">_eleccion =</span> <span class="st">&quot;2001&quot;</span>)</span>
+<span id="cb22-12"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb22-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-13"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb22-13" aria-hidden="true" tabindex="-1"></a>autoridades2006 <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">&quot;data/EG2006_Candidatos_Congresal.xlsx&quot;</span>)</span>
+<span id="cb22-14"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb22-14" aria-hidden="true" tabindex="-1"></a>autoridades2006 <span class="ot">&lt;-</span> autoridades2006 <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span><span class="fu">c</span>(Cargo, <span class="st">`</span><span class="at">N°</span><span class="st">`</span>))</span>
+<span id="cb22-15"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb22-15" aria-hidden="true" tabindex="-1"></a>autoridades2006 <span class="ot">&lt;-</span> autoridades2006 <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(Año<span class="at">_eleccion =</span> <span class="st">&quot;2006&quot;</span>)</span>
+<span id="cb22-16"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb22-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-17"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb22-17" aria-hidden="true" tabindex="-1"></a>autoridades2011 <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">&quot;data/EG2011_Candidatos_Congresal.xlsx&quot;</span>)</span>
+<span id="cb22-18"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb22-18" aria-hidden="true" tabindex="-1"></a>autoridades2011 <span class="ot">&lt;-</span> autoridades2011 <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span><span class="fu">c</span>(Cargo, <span class="st">`</span><span class="at">N°</span><span class="st">`</span>))</span>
+<span id="cb22-19"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb22-19" aria-hidden="true" tabindex="-1"></a>autoridades2011 <span class="ot">&lt;-</span> autoridades2011 <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(Año<span class="at">_eleccion =</span> <span class="st">&quot;2011&quot;</span>)</span>
+<span id="cb22-20"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb22-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-21"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb22-21" aria-hidden="true" tabindex="-1"></a>autoridades2016 <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">&quot;data/EG2016_Candidatos_Congresal.xlsx&quot;</span>)</span>
+<span id="cb22-22"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb22-22" aria-hidden="true" tabindex="-1"></a>autoridades2016 <span class="ot">&lt;-</span> autoridades2016 <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span><span class="fu">c</span>(Cargo, <span class="st">`</span><span class="at">N°</span><span class="st">`</span>))</span>
+<span id="cb22-23"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb22-23" aria-hidden="true" tabindex="-1"></a>autoridades2016 <span class="ot">&lt;-</span> autoridades2016 <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(Año<span class="at">_eleccion =</span> <span class="st">&quot;2016&quot;</span>)</span>
+<span id="cb22-24"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb22-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-25"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb22-25" aria-hidden="true" tabindex="-1"></a>Candidatos_congresales <span class="ot">&lt;-</span></span>
+<span id="cb22-26"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb22-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(</span>
+<span id="cb22-27"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb22-27" aria-hidden="true" tabindex="-1"></a>    autoridades1995,</span>
+<span id="cb22-28"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb22-28" aria-hidden="true" tabindex="-1"></a>    autoridades2000,</span>
+<span id="cb22-29"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb22-29" aria-hidden="true" tabindex="-1"></a>    autoridades2001,</span>
+<span id="cb22-30"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb22-30" aria-hidden="true" tabindex="-1"></a>    autoridades2006,</span>
+<span id="cb22-31"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb22-31" aria-hidden="true" tabindex="-1"></a>    autoridades2011,</span>
+<span id="cb22-32"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb22-32" aria-hidden="true" tabindex="-1"></a>    autoridades2016</span>
+<span id="cb22-33"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb22-33" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
+<div id="análisis-histórico-desde-las-elecciones-congresales-desde-1995-hasta-2016" class="section level2" number="4.1">
+<h2><span class="header-section-number">4.1</span> Análisis histórico desde las elecciones congresales desde 1995 hasta 2016</h2>
+<p>Tomando en cuenta la información histórica de las elecciones realizadas en 1995 hasta 2016 se logra apreciar el cambio ocurrido elección tras elección, en lo que concierne, porcentualmente, al número de mujeres que conformaron las listas congresales.</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb23-1" aria-hidden="true" tabindex="-1"></a>historico <span class="ot">&lt;-</span> Candidatos_congresales <span class="sc">%&gt;%</span></span>
+<span id="cb23-2"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(Año_eleccion, Sexo, ) <span class="sc">%&gt;%</span></span>
+<span id="cb23-3"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Año_eleccion) <span class="sc">%&gt;%</span></span>
+<span id="cb23-4"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb23-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">porcentaje =</span> n <span class="sc">/</span> <span class="fu">sum</span>(n) <span class="sc">*</span> <span class="dv">100</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb23-5"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb23-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(Año_eleccion, porcentaje, <span class="at">color =</span> Sexo, <span class="at">group =</span> Sexo)) <span class="sc">+</span></span>
+<span id="cb23-6"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb23-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()</span>
+<span id="cb23-7"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb23-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-8"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb23-8" aria-hidden="true" tabindex="-1"></a>historico <span class="sc">+</span></span>
+<span id="cb23-9"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb23-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_clean</span>() <span class="sc">+</span></span>
+<span id="cb23-10"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb23-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb23-11"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb23-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Evolución historica de la participación de mujeres candidatas </span><span class="sc">\n</span><span class="st">desde 1995 hasta 2006&quot;</span>,</span>
+<span id="cb23-12"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb23-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">&quot;Distribución porcentual&quot;</span>,</span>
+<span id="cb23-13"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb23-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">&quot;Fuente: infogob&quot;</span>,</span>
+<span id="cb23-14"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb23-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Años&quot;</span>,</span>
+<span id="cb23-15"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb23-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Porcentaje de participación&quot;</span>,</span>
+<span id="cb23-16"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb23-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">&quot;sexo&quot;</span>,</span>
+<span id="cb23-17"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb23-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">shape =</span> <span class="st">&quot;sexo&quot;</span></span>
+<span id="cb23-18"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb23-18" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
+<div class="figure"><span id="fig:chris-historico"></span>
+<img src="grupo_2021_enero_febrero_files/figure-html/chris-historico-1.png" alt="Evolución historica de la participación de mujeres candidatas desde 1995 hasta 2006" width="672" />
+<p class="caption">
+Gráfico 4.1: Evolución historica de la participación de mujeres candidatas desde 1995 hasta 2006
+</p>
+</div>
+<p>Como se muestra en el gráfico precedente, en 1995 el nivel de participación de mujeres era solo de 12.82%. No obstante,para las elecciones del 2000 (observando una evolución ascendente) el nivel de representación fue de 25.83%. Este cambio denota crecimiento significatioo entre un periodo y otro respecto al número de mujeres que fueron parte de las listas congresales.
+Tomando en cuenta el nivel de crecimiento que hubo desde 1995 hasta 2011 (39.40%), existió un cambio progrestivo, tal como se observa gráficamente. Sin embargo, cabe preguntarse ¿Cómo ha sido el cambio a nivel de distrito electoral y a nivel de organizaciones políticas? Pues estas son características importantes a tomar en cuenta como parte del análisis del sistema electoral peruano.</p>
+</div>
+<div id="participación-de-mujeres-en-las-elecciones-congresales-del-2001-por-distrito-electoral" class="section level2" number="4.2">
+<h2><span class="header-section-number">4.2</span> Participación de mujeres en las elecciones congresales del 2001 por distrito electoral</h2>
+<p>Para esta sección, se tomará en cuenta 6 distritos electorales elegidos al azar, el cual permitirá observar graficamente como ha cambiado el nivel de participación de mujeres en cada distrito electoral. Este análisis será realizado con información de las elecciones del 2001, 2006, 2011 y 2016.</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb24-1" aria-hidden="true" tabindex="-1"></a>distritos2001 <span class="ot">&lt;-</span> Candidatos_congresales <span class="sc">%&gt;%</span></span>
+<span id="cb24-2"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Año_eleccion <span class="sc">==</span> <span class="st">&quot;2001&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb24-3"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(<span class="st">`</span><span class="at">Distrito Electoral</span><span class="st">`</span>, Sexo) <span class="sc">%&gt;%</span></span>
+<span id="cb24-4"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb24-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(<span class="st">`</span><span class="at">Distrito Electoral</span><span class="st">`</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb24-5"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb24-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">porcentaje =</span> n <span class="sc">/</span> <span class="fu">sum</span>(n) <span class="sc">*</span> <span class="dv">100</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb24-6"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb24-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">porcentajes =</span> <span class="fu">round</span>(porcentaje)) <span class="sc">%&gt;%</span></span>
+<span id="cb24-7"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb24-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb24-8"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb24-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(</span>
+<span id="cb24-9"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb24-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Distrito Electoral</span><span class="st">`</span> <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;AMAZONAS&quot;</span>, <span class="st">&quot;LIMA&quot;</span>, <span class="st">&quot;AREQUIPA&quot;</span>, <span class="st">&quot;CALLAO&quot;</span>, <span class="st">&quot;LORETO&quot;</span>, <span class="st">&quot;MOQUEGUA&quot;</span>)</span>
+<span id="cb24-10"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb24-10" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb24-11"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb24-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> porcentaje , <span class="at">y =</span> <span class="st">`</span><span class="at">Distrito Electoral</span><span class="st">`</span>, <span class="at">fill =</span> Sexo)) <span class="sc">+</span></span>
+<span id="cb24-12"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb24-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>()</span>
+<span id="cb24-13"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb24-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-14"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb24-14" aria-hidden="true" tabindex="-1"></a>distritos2001 <span class="sc">+</span></span>
+<span id="cb24-15"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb24-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_clean</span>() <span class="sc">+</span></span>
+<span id="cb24-16"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb24-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb24-17"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb24-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Participación de mujeres por distrito electoral&quot;</span>,</span>
+<span id="cb24-18"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb24-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">&quot;Elección congresal 2001&quot;</span>,</span>
+<span id="cb24-19"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb24-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">&quot;Fuente: infogob&quot;</span>,</span>
+<span id="cb24-20"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb24-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Porcentaje de participación&quot;</span>,</span>
+<span id="cb24-21"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb24-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Distritos electorales&quot;</span>,</span>
+<span id="cb24-22"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb24-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">&quot;sexo&quot;</span>,</span>
+<span id="cb24-23"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb24-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">shape =</span> <span class="st">&quot;sexo&quot;</span></span>
+<span id="cb24-24"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb24-24" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
+<div class="figure"><span id="fig:chris-distritos1"></span>
+<img src="grupo_2021_enero_febrero_files/figure-html/chris-distritos1-1.png" alt="Participación de mujeres por distrito electoral, 2001" width="672" />
+<p class="caption">
+Gráfico 4.2: Participación de mujeres por distrito electoral, 2001
+</p>
+</div>
+<p>Conociendo el promedio porcentual de mujeres participantes en el 2001 (35.72%), la situación en estos distritos electorales resulta similar a excepción de Arequipa, quien llega tener un 40% de mujeres el las listas congresales. Por parte de los otros distritos electorales, el nivel de representación en el 2001 fue el siguiente: Loreto 36.84%, Amazonas 36.11%, Lima 35.16% y Callao con 30.76%.</p>
+</div>
+<div id="participación-de-mujeres-en-las-elecciones-congresales-del-2006-por-distrito-electoral" class="section level2" number="4.3">
+<h2><span class="header-section-number">4.3</span> Participación de mujeres en las elecciones congresales del 2006 por distrito electoral</h2>
+<p>Para este periodo electoral el promedio de mujeres que participaron en las listas congresales fue de 38.56%, un ligero cambio al periodo electoral anterior. Sin embargo, existen cambios al observar el comportamiento por distritos electorales, como bien se observa en el siguiente gráfico:</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb25-1" aria-hidden="true" tabindex="-1"></a>distrito2006 <span class="ot">&lt;-</span> Candidatos_congresales <span class="sc">%&gt;%</span></span>
+<span id="cb25-2"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Año_eleccion <span class="sc">==</span> <span class="st">&quot;2006&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb25-3"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(<span class="st">`</span><span class="at">Distrito Electoral</span><span class="st">`</span>, Sexo) <span class="sc">%&gt;%</span></span>
+<span id="cb25-4"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb25-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(<span class="st">`</span><span class="at">Distrito Electoral</span><span class="st">`</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb25-5"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb25-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">porcentaje =</span> n <span class="sc">/</span> <span class="fu">sum</span>(n) <span class="sc">*</span> <span class="dv">100</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb25-6"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb25-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">porcentajes =</span> <span class="fu">round</span>(porcentaje)) <span class="sc">%&gt;%</span></span>
+<span id="cb25-7"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb25-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb25-8"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb25-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(</span>
+<span id="cb25-9"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb25-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Distrito Electoral</span><span class="st">`</span> <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;AMAZONAS&quot;</span>, <span class="st">&quot;LIMA&quot;</span>, <span class="st">&quot;AREQUIPA&quot;</span>, <span class="st">&quot;CALLAO&quot;</span>, <span class="st">&quot;LORETO&quot;</span>, <span class="st">&quot;MOQUEGUA&quot;</span>)</span>
+<span id="cb25-10"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb25-10" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb25-11"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb25-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> porcentaje , <span class="at">y =</span> <span class="st">`</span><span class="at">Distrito Electoral</span><span class="st">`</span>, <span class="at">fill =</span> Sexo)) <span class="sc">+</span></span>
+<span id="cb25-12"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb25-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>()</span>
+<span id="cb25-13"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb25-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-14"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb25-14" aria-hidden="true" tabindex="-1"></a>distrito2006 <span class="sc">+</span></span>
+<span id="cb25-15"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb25-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_clean</span>() <span class="sc">+</span></span>
+<span id="cb25-16"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb25-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb25-17"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb25-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Participación de mujeres por distrito electoral&quot;</span>,</span>
+<span id="cb25-18"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb25-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">&quot;Elección congresal 2006&quot;</span>,</span>
+<span id="cb25-19"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb25-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">&quot;Fuente: infogob&quot;</span>,</span>
+<span id="cb25-20"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb25-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Porcentaje de participación&quot;</span>,</span>
+<span id="cb25-21"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb25-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Distritos electorales&quot;</span>,</span>
+<span id="cb25-22"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb25-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">&quot;sexo&quot;</span>,</span>
+<span id="cb25-23"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb25-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">shape =</span> <span class="st">&quot;sexo&quot;</span></span>
+<span id="cb25-24"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb25-24" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
+<div class="figure"><span id="fig:chris-distritos2"></span>
+<img src="grupo_2021_enero_febrero_files/figure-html/chris-distritos2-1.png" alt="Participación de mujeres por distrito electoral, 2006" width="672" />
+<p class="caption">
+Gráfico 4.3: Participación de mujeres por distrito electoral, 2006
+</p>
+</div>
+<p>Como se aprecia, Callao llega a tener un 52.17% de mujeres en listas congresales, caso contratio de los otros distritos como Arequipa con 42.57%, Loreto con 40%, Amazonas con 38.29% y Lima con 32.97%.
+Para este periodo electoral logran resaltar dos aspectos: 1) Callao, de ser el distrito electoral con menor representación de mujeres en listas congresales, en este periodo es quien supera el 50%, y 2) Lima sigue siendo el distrito electoral con menor representación de mujeres en listas congresales.</p>
+</div>
+<div id="participación-de-mujeres-en-las-elecciones-congresales-del-2011-por-distrito-electoral" class="section level2" number="4.4">
+<h2><span class="header-section-number">4.4</span> Participación de mujeres en las elecciones congresales del 2011 por distrito electoral</h2>
+<p>El nivel de representación para el año 2011 fue de 39.40%, el cual denota un ligero crecimiento respecto al año electoral anterior. No obstante, para este año ¿qué cambios habrán a nivel distrito electoral? y ¿Lima será nuevamente el distrito electoral com menor representación de mujeres en listas congresales? Estas interrogantes logran resolverse observando el siguiente gráfico:</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb26-1" aria-hidden="true" tabindex="-1"></a>distrito2011 <span class="ot">&lt;-</span> Candidatos_congresales <span class="sc">%&gt;%</span></span>
+<span id="cb26-2"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Año_eleccion <span class="sc">==</span> <span class="st">&quot;2011&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb26-3"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb26-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(<span class="st">`</span><span class="at">Distrito Electoral</span><span class="st">`</span>, Sexo) <span class="sc">%&gt;%</span></span>
+<span id="cb26-4"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb26-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(<span class="st">`</span><span class="at">Distrito Electoral</span><span class="st">`</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb26-5"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb26-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">porcentaje =</span> n <span class="sc">/</span> <span class="fu">sum</span>(n) <span class="sc">*</span> <span class="dv">100</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb26-6"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb26-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">porcentajes =</span> <span class="fu">round</span>(porcentaje)) <span class="sc">%&gt;%</span></span>
+<span id="cb26-7"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb26-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb26-8"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb26-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(</span>
+<span id="cb26-9"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb26-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Distrito Electoral</span><span class="st">`</span> <span class="sc">%in%</span> <span class="fu">c</span>(</span>
+<span id="cb26-10"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb26-10" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;AMAZONAS&quot;</span>,</span>
+<span id="cb26-11"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb26-11" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;AREQUIPA&quot;</span>,</span>
+<span id="cb26-12"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb26-12" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;CALLAO&quot;</span>,</span>
+<span id="cb26-13"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb26-13" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;LIMA + RESIDENTES EN EL EXTRANJERO&quot;</span>,</span>
+<span id="cb26-14"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb26-14" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;LORETO&quot;</span>,</span>
+<span id="cb26-15"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb26-15" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;MOQUEGUA&quot;</span></span>
+<span id="cb26-16"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb26-16" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb26-17"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb26-17" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb26-18"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb26-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> porcentaje , <span class="at">y =</span> <span class="st">`</span><span class="at">Distrito Electoral</span><span class="st">`</span>, <span class="at">fill =</span> Sexo)) <span class="sc">+</span></span>
+<span id="cb26-19"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb26-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>()</span>
+<span id="cb26-20"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb26-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-21"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb26-21" aria-hidden="true" tabindex="-1"></a>distrito2011 <span class="sc">+</span></span>
+<span id="cb26-22"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb26-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_clean</span>() <span class="sc">+</span></span>
+<span id="cb26-23"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb26-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb26-24"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb26-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Participación de mujeres por distrito electoral&quot;</span>,</span>
+<span id="cb26-25"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb26-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">&quot;Elección congresal 2011&quot;</span>,</span>
+<span id="cb26-26"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb26-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">&quot;Fuente: infogob&quot;</span>,</span>
+<span id="cb26-27"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb26-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Porcentaje de participación&quot;</span>,</span>
+<span id="cb26-28"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb26-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Distritos electorales&quot;</span>,</span>
+<span id="cb26-29"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb26-29" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">&quot;sexo&quot;</span>,</span>
+<span id="cb26-30"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb26-30" aria-hidden="true" tabindex="-1"></a>    <span class="at">shape =</span> <span class="st">&quot;sexo&quot;</span></span>
+<span id="cb26-31"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb26-31" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
+<div class="figure"><span id="fig:chris-distritos3"></span>
+<img src="grupo_2021_enero_febrero_files/figure-html/chris-distritos3-1.png" alt="Participación de mujeres por distrito electoral, 2011" width="672" />
+<p class="caption">
+Gráfico 4.4: Participación de mujeres por distrito electoral, 2011
+</p>
+</div>
+<p>En este periodo, Loreto logra un 50% de representación femenina, Callao logra 48.83%, Amazonas logra 37.50, Lima + residentes en el extranjero 33.93% y por último Arequipa con 32.35%. Nuevamente Callao sigue siendo uno de los distritos electorales que supera el nivel de representación promedio y Lima sigue siendo el distrito electoral con menor participación de mujeres como candidatas al congreso.</p>
+</div>
+<div id="participación-de-mujeres-en-las-elecciones-congresales-del-2016-por-distrito-electoral" class="section level2" number="4.5">
+<h2><span class="header-section-number">4.5</span> Participación de mujeres en las elecciones congresales del 2016 por distrito electoral</h2>
+<p>El nivel de representación para el año 2016 fue de 39.06%, el cual denota un ligero retroceso respecto al año electoral anterior. No obstante, este año logra mantener cierta tendencia en algunos distritos electorales como bien se muestra en el siguiente gráfico:</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb27-1" aria-hidden="true" tabindex="-1"></a>distrito2016 <span class="ot">&lt;-</span> Candidatos_congresales <span class="sc">%&gt;%</span></span>
+<span id="cb27-2"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Año_eleccion <span class="sc">==</span> <span class="st">&quot;2016&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb27-3"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb27-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(<span class="st">`</span><span class="at">Distrito Electoral</span><span class="st">`</span>, Sexo) <span class="sc">%&gt;%</span></span>
+<span id="cb27-4"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb27-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(<span class="st">`</span><span class="at">Distrito Electoral</span><span class="st">`</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb27-5"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb27-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">porcentaje =</span> n <span class="sc">/</span> <span class="fu">sum</span>(n) <span class="sc">*</span> <span class="dv">100</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb27-6"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb27-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">porcentajes =</span> <span class="fu">round</span>(porcentaje)) <span class="sc">%&gt;%</span></span>
+<span id="cb27-7"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb27-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb27-8"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb27-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(</span>
+<span id="cb27-9"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb27-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Distrito Electoral</span><span class="st">`</span> <span class="sc">%in%</span> <span class="fu">c</span>(</span>
+<span id="cb27-10"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb27-10" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;AMAZONAS&quot;</span>,</span>
+<span id="cb27-11"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb27-11" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;AREQUIPA&quot;</span>,</span>
+<span id="cb27-12"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb27-12" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;CALLAO&quot;</span>,</span>
+<span id="cb27-13"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb27-13" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;LIMA + RESIDENTES EN EL EXTRANJERO&quot;</span>,</span>
+<span id="cb27-14"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb27-14" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;LORETO&quot;</span>,</span>
+<span id="cb27-15"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb27-15" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;MOQUEGUA&quot;</span></span>
+<span id="cb27-16"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb27-16" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb27-17"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb27-17" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb27-18"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb27-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> porcentaje , <span class="at">y =</span> <span class="st">`</span><span class="at">Distrito Electoral</span><span class="st">`</span>, <span class="at">fill =</span> Sexo)) <span class="sc">+</span></span>
+<span id="cb27-19"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb27-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>()</span>
+<span id="cb27-20"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb27-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-21"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb27-21" aria-hidden="true" tabindex="-1"></a>distrito2016 <span class="sc">+</span></span>
+<span id="cb27-22"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb27-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_clean</span>() <span class="sc">+</span></span>
+<span id="cb27-23"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb27-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb27-24"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb27-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Participación de mujeres por distrito electoral&quot;</span>,</span>
+<span id="cb27-25"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb27-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">&quot;Elección congresal 2011&quot;</span>,</span>
+<span id="cb27-26"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb27-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">&quot;Fuente: infogob&quot;</span>,</span>
+<span id="cb27-27"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb27-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Porcentaje de participación&quot;</span>,</span>
+<span id="cb27-28"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb27-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Distritos electorales&quot;</span>,</span>
+<span id="cb27-29"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb27-29" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">&quot;sexo&quot;</span>,</span>
+<span id="cb27-30"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb27-30" aria-hidden="true" tabindex="-1"></a>    <span class="at">shape =</span> <span class="st">&quot;sexo&quot;</span></span>
+<span id="cb27-31"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb27-31" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
+<div class="figure"><span id="fig:chris-distritos4"></span>
+<img src="grupo_2021_enero_febrero_files/figure-html/chris-distritos4-1.png" alt="Participación de mujeres por distrito electoral, 2016" width="672" />
+<p class="caption">
+Gráfico 4.5: Participación de mujeres por distrito electoral, 2016
+</p>
+</div>
+<p>Una vez más Callao (51.28%), Loreto (47.05%) y Amazonas (43.47%) son los distritos con mayor porcentaje de mujeres en listas congresales. Caso contrario Arequipa (35.59%), Lima + redidentes en el extranjero (34.27%) y Moquegua (32.14%). Estos últimos mantiene una tendencia por debajo del promedio general(39.06%). Esta gráfica nos muestra a Lima nuevamente con un porcentaje menor, teniendo en cuenta el número de escaños que le corresponde denota cierta desigualdad en torno al número de candidatas mujeres. No obstante, cabe preguntarse ¿qué números ocuparon estas candidatas en estos distritos de mayor y menor representación? Por ahora no abordaremo ese tema.</p>
+</div>
+<div id="mujeres-y-organizaciones-políticas-nivel-de-participación-de-mujeres-desde-las-organizaciones-políticas" class="section level2" number="4.6">
+<h2><span class="header-section-number">4.6</span> Mujeres y organizaciones políticas: nivel de participación de mujeres desde las organizaciones políticas</h2>
+<p>Anteriormente, losgramos graficar el nivel porcentual de mujeres candidatas en 6 distritos electorales, ello nos mostró ciertas tendencias positivas en algunos distritos electorales y otras que se mantenian por debajo de promedio.
+En esta ocasión, veremos el cambio temporal desde 1995 al 2011, pero a nivel de tipo de organización política. Para 1995 se mostrarán 3 tipos: Partido político, Alianza política y Lista independiente. Por otro lado, para 2011 solo 2 tipos: Partido político y Alianza electoral.</p>
+<div id="elecciones-congresales-de-1995" class="section level3" number="4.6.1">
+<h3><span class="header-section-number">4.6.1</span> Elecciones congresales de 1995</h3>
+<p>Este periodo electoral se puede catalogar como un periodo oscuro, ya que los niveles de participación eran muy bajos.Recordemos que la naturalza de una organización politica es en cierta medida el seno de representación institucional, ya que estos tiene como objetivo posicionar a sus representates en el poder ejecutivo y legislativo. Sin embargo, al desagregar las listas por sexo, el resultado es el siguiente:</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb28-1" aria-hidden="true" tabindex="-1"></a>tipodeorganización95 <span class="ot">&lt;-</span> Candidatos_congresales <span class="sc">%&gt;%</span></span>
+<span id="cb28-2"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Año_eleccion <span class="sc">==</span> <span class="st">&quot;1995&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb28-3"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb28-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(<span class="st">`</span><span class="at">Tipo Organización Política</span><span class="st">`</span>, Sexo, ) <span class="sc">%&gt;%</span></span>
+<span id="cb28-4"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb28-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(<span class="st">`</span><span class="at">Tipo Organización Política</span><span class="st">`</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb28-5"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb28-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">porcentaje =</span> n <span class="sc">/</span> <span class="fu">sum</span>(n) <span class="sc">*</span> <span class="dv">100</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb28-6"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb28-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">porcentajes =</span> <span class="fu">round</span>(porcentaje)) <span class="sc">%&gt;%</span></span>
+<span id="cb28-7"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb28-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb28-8"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb28-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> porcentaje , <span class="at">y =</span> <span class="st">`</span><span class="at">Tipo Organización Política</span><span class="st">`</span>, <span class="at">fill =</span> Sexo)) <span class="sc">+</span></span>
+<span id="cb28-9"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb28-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>()</span>
+<span id="cb28-10"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb28-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-11"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb28-11" aria-hidden="true" tabindex="-1"></a>tipodeorganización95 <span class="sc">+</span></span>
+<span id="cb28-12"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb28-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_clean</span>() <span class="sc">+</span></span>
+<span id="cb28-13"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb28-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb28-14"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb28-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Participación de mujeres por Organización Política&quot;</span>,</span>
+<span id="cb28-15"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb28-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">&quot;Distribución segun el tipo de Organziación Política&quot;</span>,</span>
+<span id="cb28-16"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb28-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">&quot;Fuente: infogob&quot;</span>,</span>
+<span id="cb28-17"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb28-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Tipo de Organización Política&quot;</span>,</span>
+<span id="cb28-18"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb28-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Porcentaje de participación&quot;</span>,</span>
+<span id="cb28-19"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb28-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">&quot;sexo&quot;</span>,</span>
+<span id="cb28-20"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb28-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">shape =</span> <span class="st">&quot;sexo&quot;</span></span>
+<span id="cb28-21"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb28-21" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
+<div class="figure"><span id="fig:chris-org1"></span>
+<img src="grupo_2021_enero_febrero_files/figure-html/chris-org1-1.png" alt="Participación de mujeres por Organización Política, 1995" width="672" />
+<p class="caption">
+Gráfico 4.6: Participación de mujeres por Organización Política, 1995
+</p>
+</div>
+<p>Para el periodo electoral en mención, las alianzas elecoctorales solo consignaban un 7.5% de mujeres en sus listas, los partidos políticos un 13.22% y las listas independientes un 14.91%. Estas cifran denotan un periodo electoral mayoritariament masculino, por ende, habría un sesgo en la elaboración de las politicas de dicho periodo.</p>
+</div>
+<div id="elecciones-congresales-de-2016" class="section level3" number="4.6.2">
+<h3><span class="header-section-number">4.6.2</span> Elecciones congresales de 2016</h3>
+<p>Para el año 2016 la situación es totalmente diferente, pues de un porcentaje menor al 15% en 1995, para este periodo las alianzas electorales poseen un 39.48% de mujeres candidatas y los partidos políticos incorporan un 38.95% de mujeres en sus listas.
+Estas son cifras ciertamente alentadoreas si son comparadas con el periodo electoral de 1995. No obstante, recordemos que estos cambio de incorporación de mujeres estuvo amparado por un marco normativo, cabe preguntarno ¿Cual sería el nivel de mujeres candidatas si no se hubieran incorporado normativas de inclusión en las listas congresales?</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb29-1" aria-hidden="true" tabindex="-1"></a>tipodeorganizacion16 <span class="ot">&lt;-</span> Candidatos_congresales <span class="sc">%&gt;%</span></span>
+<span id="cb29-2"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Año_eleccion <span class="sc">==</span> <span class="st">&quot;2016&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb29-3"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb29-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(<span class="st">`</span><span class="at">Tipo Organización Política</span><span class="st">`</span>, Sexo, ) <span class="sc">%&gt;%</span></span>
+<span id="cb29-4"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb29-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(<span class="st">`</span><span class="at">Tipo Organización Política</span><span class="st">`</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb29-5"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb29-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">porcentaje =</span> n <span class="sc">/</span> <span class="fu">sum</span>(n) <span class="sc">*</span> <span class="dv">100</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb29-6"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb29-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">porcentajes =</span> <span class="fu">round</span>(porcentaje)) <span class="sc">%&gt;%</span></span>
+<span id="cb29-7"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb29-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb29-8"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb29-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> porcentaje , <span class="at">y =</span> <span class="st">`</span><span class="at">Tipo Organización Política</span><span class="st">`</span>, <span class="at">fill =</span> Sexo)) <span class="sc">+</span></span>
+<span id="cb29-9"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb29-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>()</span>
+<span id="cb29-10"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb29-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-11"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb29-11" aria-hidden="true" tabindex="-1"></a>tipodeorganizacion16 <span class="sc">+</span></span>
+<span id="cb29-12"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb29-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_clean</span>() <span class="sc">+</span></span>
+<span id="cb29-13"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb29-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb29-14"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb29-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Participación de mujeres por Organización Política&quot;</span>,</span>
+<span id="cb29-15"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb29-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">&quot;Distribución segun el tipo de Organziación Política&quot;</span>,</span>
+<span id="cb29-16"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb29-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">&quot;Fuente: infogob&quot;</span>,</span>
+<span id="cb29-17"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb29-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Tipo de Organización Política&quot;</span>,</span>
+<span id="cb29-18"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb29-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Porcentaje de participación&quot;</span>,</span>
+<span id="cb29-19"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb29-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">&quot;sexo&quot;</span>,</span>
+<span id="cb29-20"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb29-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">shape =</span> <span class="st">&quot;sexo&quot;</span></span>
+<span id="cb29-21"><a href="la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales.html#cb29-21" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
+<div class="figure"><span id="fig:chris-org2"></span>
+<img src="grupo_2021_enero_febrero_files/figure-html/chris-org2-1.png" alt="Participación de mujeres por Organización Política, 2016" width="672" />
+<p class="caption">
+Gráfico 4.7: Participación de mujeres por Organización Política, 2016
+</p>
+</div>
+</div>
+</div>
+<div id="conclusion" class="section level2" number="4.7">
+<h2><span class="header-section-number">4.7</span> Conclusion</h2>
+<p>Recordemos el título de este trabajo “¿La política es ancha y ajena?” La historia no muestra que si, periodo tas periodo ha sido una lucha por ir ganando terreno en materia de representación no solo por parte de las mujeres, tambien por otras minorías que no se sienten representadas. Si bien, cada ciudadano y ciudadana ejerce su decisión mediante el voto, el abanico de opciónes ha sido predominantemente masculino.
+Este trabajo nos abre una serie de interrogantes dignos de análisis, pues ¿qué pasa en el caso de regidores y regidoras, candidatos y candidatas a una alcandía, candidatos y candidatas a un gobierno regional? ¿Cómo se componen las cúpulas dirigenciales de las organizaciones políticas? Y una serie de inerrogantes que serán motivo de análisis en otra ocación.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="ausentismo-en-las-elecciones-congresales-2020.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="bibliografia.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["grupo_2021_enero_febrero.pdf", "grupo_2021_enero_febrero.epub"],
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

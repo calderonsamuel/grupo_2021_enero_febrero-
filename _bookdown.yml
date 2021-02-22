@@ -1,0 +1,9 @@
+book_filename: "grupo_2021_enero_febrero"
+delete_merged_file: true
+language:
+  label: 
+    tab: "Tabla "
+    fig: "Gráfico "
+  ui:
+    edit: "Editar"
+    chapter_name: "Capítulo "

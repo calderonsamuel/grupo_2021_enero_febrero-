@@ -1,0 +1,333 @@
+```{r, include=FALSE}
+source("R/global.R")
+knitr::opts_template$set(
+  tablaOriginal = list(
+    echo = TRUE,
+    eval = FALSE
+  ),
+  tablaKable = list(
+    echo = FALSE,
+    eval = TRUE
+  )
+)
+```
+
+
+# Ausentismo en las Elecciones Congresales 2020
+
+```{r, message=TRUE, warning=TRUE}
+library(ggthemes)
+library(tidyverse)
+```
+
+El ausentismo electoral ha sido un lastre a lo largo de los últimos 20 años de democracia, a nivel nacional y subnacional, dificilmente superando el 30% de votantes pero nunca debajo del 15%. Con ello, nos encontramos con la necesidad entender que puede incentivar dicha actitud, lo cual suele atribuirse al desinterés o la desafección hacia el sistema político o la política en sentido general.
+
+
+@almond1970 habían planteado el concepto de eficacia política para referirse a la autopercepción de capacidad influencia que una persona tiene sobre el sistema político y en su vida cotidiana. Esto, a su vez, fue vinculado con el nivel socioeconómico y, además, con el interés en la política (y el nivel educativo era un buen predictor de ello). Fernández (2019) va más lejos al vincular la precariedad a nivel de satisfacción de necesidades con la apatía política y el apoyo a partidos populistas de derecha, situando el caso Europeo y la reducción del estado de bienestar.
+
+Contando con la información brindada por la Oficina Nacional de Procesos Electorales y el Instituto Nacional de Estadística e Informática, intentaré establecer una relación entre los años de educación superior, la esperanza de vida, los ingresos familiares per capita y el IDH de los 43 distritos de Lima al vincularse al ausentismo electoral. 
+
+Consciente de las grandes limitaciones en materia de información disponible, el análisis presentado servirá más de referencia sobre la interrelación entre la satisfacción de necesidades y la actitud hacia el sistema política.
+
+```{r, warning=FALSE, message=FALSE}
+metadata <- read_csv("data/metadata.csv")
+idhdistrito <- read_csv("data/idhdistrito.csv")
+```
+
+## El Ausentismo Electoral en las Elecciones del 2020
+
+En las Elecciones Congresales del 2020, el ausentismo estuvo distribuido a lo largo de todas las circunscripciones. Para esto utilizo la base de datos metadata, la cual contiene información de la Oficina Nacional de Procesos Electorales sobre la participación electoral a nivel nacional.
+
+```{r, antenor1, opts.label = "tablaOriginal"}
+metadata %>% 
+  sample_n(10) 
+```
+
+```{r antenor1kable, opts.label = "tablaKable"}
+metadata %>% 
+  sample_n(10) %>% 
+  default_tbl("Muestra de 10 observaciones al azar de metadata")
+```
+
+
+Como observamos en las dos tablas siguientes, las tasas más altas de ausentismo se da entre la población peruana en el extranjero, posiblemente por cuestiones logísticas y flexible obligatoreidad. En lo que respecta al Perú, vemos como en Ica el porcentaje de ausentismo alcanza su nivel mínimo de 17,5%, mientras que en Loreto alcanza casi el 40%.
+
+
+```{r antenor2, opts.label = "tablaOriginal"}
+metadata %>%
+  group_by(DEPARTAMENTO) %>%
+  summarise(
+    total_electores = sum(NNUME_HABILM),
+    total_votaron = sum(TOT_CIUDADANOS_VOTARON)
+  ) %>%
+  ungroup() %>%
+  mutate(total_ausentes = total_electores - total_votaron) %>%
+  mutate (porcen_ausente = (total_ausentes * 100) / total_electores) %>%
+  select(DEPARTAMENTO, porcen_ausente) %>%
+  arrange (desc(porcen_ausente)) %>%
+  mutate(rank = row_number()) %>%
+  filter(rank <= 30)
+```
+
+```{r antenor2kable, opts.label = "tablaKable"}
+metadata %>%
+  group_by(DEPARTAMENTO) %>%
+  summarise(
+    total_electores = sum(NNUME_HABILM),
+    total_votaron = sum(TOT_CIUDADANOS_VOTARON)
+  ) %>%
+  ungroup() %>%
+  mutate(total_ausentes = total_electores - total_votaron) %>%
+  mutate (porcen_ausente = (total_ausentes * 100) / total_electores) %>%
+  select(DEPARTAMENTO, porcen_ausente) %>%
+  arrange (desc(porcen_ausente)) %>%
+  mutate(rank = row_number()) %>%
+  filter(rank <= 30) %>% 
+  default_tbl("Ausentismo electoral por departamento, descendiente")
+```
+
+```{r antenor3, opts.label = "tablaOriginal"}
+metadata %>%
+  group_by(DEPARTAMENTO) %>%
+  summarise(
+    total_electores = sum(NNUME_HABILM),
+    total_votaron = sum(TOT_CIUDADANOS_VOTARON)
+  ) %>%
+  ungroup() %>%
+  mutate(total_ausentes = total_electores - total_votaron) %>%
+  mutate (porcen_ausente = (total_ausentes * 100) / total_electores) %>%
+  select(DEPARTAMENTO, porcen_ausente) %>%
+  arrange(porcen_ausente) %>%
+  mutate(rank = row_number()) %>%
+  filter(rank <= 30)
+```
+
+```{r antenor3kable, opts.label = "tablaKable"}
+metadata %>%
+  group_by(DEPARTAMENTO) %>%
+  summarise(
+    total_electores = sum(NNUME_HABILM),
+    total_votaron = sum(TOT_CIUDADANOS_VOTARON)
+  ) %>%
+  ungroup() %>%
+  mutate(total_ausentes = total_electores - total_votaron) %>%
+  mutate (porcen_ausente = (total_ausentes * 100) / total_electores) %>%
+  select(DEPARTAMENTO, porcen_ausente) %>%
+  arrange(porcen_ausente) %>%
+  mutate(rank = row_number()) %>%
+  filter(rank <= 30) %>% 
+  default_tbl("Ausentismo electoral por departamento, ascendente")
+```
+
+## El Ausentismo Electoral en Lima Metropolitana
+
+Para revisar el caso limeño, utilizo la base de datos metadatalima, la cual es una versión de metadata filtrando las observaciones ubicadas en Lima Metropolitana.
+
+```{r}
+metadatalima <- metadata %>% filter(PROVINCIA == "LIMA")
+```
+
+```{r antenor4, opts.label = "tablaOriginal"}
+metadatalima %>% 
+  sample_n(10)
+```
+
+```{r antenor4kable, opts.label = "tablaKable"}
+metadatalima %>% 
+  sample_n(10) %>% 
+  default_tbl("Muestra de 10 observaciones de 'metadatalima'")
+```
+
+En el caso de Lima este margen se mueve hacia un menor ausentismo. En comparación a la población nacional, el ausentismo mínimo es del 15,5%, en el distrito de Villa El Salvador, mientras que en el distrito de San Isidro se observa la máxima tasa de ausentismo con un 29.1%, casi un tercio de la población. En particular, las diferencias entre ambos distritos, como veremos adelante, tendrían un carácter económico bastante pronunciado.
+
+```{r antenor5, opts.label = "tablaOriginal"}
+metadatalima %>%
+  group_by(DISTRITO) %>%
+  summarise(
+    total_electores = sum(NNUME_HABILM),
+    total_votaron = sum(TOT_CIUDADANOS_VOTARON)
+  ) %>%
+  ungroup() %>%
+  mutate(total_ausentes = total_electores - total_votaron) %>%
+  mutate (porcen_ausente = (total_ausentes * 100) / total_electores) %>%
+  select(DISTRITO, porcen_ausente) %>%
+  arrange(porcen_ausente) %>%
+  mutate(rank = row_number()) %>%
+  filter(rank <= 43) 
+```
+
+```{r antenor5kable, opts.label = "tablaKable"}
+metadatalima %>%
+  group_by(DISTRITO) %>%
+  summarise(
+    total_electores = sum(NNUME_HABILM),
+    total_votaron = sum(TOT_CIUDADANOS_VOTARON)
+  ) %>%
+  ungroup() %>%
+  mutate(total_ausentes = total_electores - total_votaron) %>%
+  mutate (porcen_ausente = (total_ausentes * 100) / total_electores) %>%
+  select(DISTRITO, porcen_ausente) %>%
+  arrange(porcen_ausente) %>%
+  mutate(rank = row_number()) %>%
+  filter(rank <= 43) %>% 
+  default_tbl("Ausentismo en distritos de Lima Metropolitana")
+```
+
+## ¿Por qué hay Ausentismo Electoral en Lima?
+
+Responder esta pregunta dependería de un análisis más profundo, detallado y con más información de la que dispongo en este momento, sin embargo, la comparación entre aspectos de cada distrito puede llevarnos a hacernos preguntas sobre el vínculo entre la situación de la población y la tendencia al ausentismo. 
+
+Para este propósito utilizaré la base de datos idhmetalima.  Es la conjunción de la base de datos metametadatalima, el cuál agregó el total de electores, el total de votantes, el total de ausentes y el porcentaje de ausentes a metadatalima. e idhlima, que tiene información sobre el nivel de IDH, esperanza de vida, nivel educativo e ingresos de los distritos de Lima Metropolitana. 
+
+```{r}
+idhlima <- idhdistrito %>%
+  mutate(DISTRITO = str_to_upper(DISTRITO))
+```
+
+```{r}
+metametadata <- metadatalima %>%
+  group_by(DISTRITO) %>%
+  summarise(
+    total_electores = sum(NNUME_HABILM),
+    total_votaron = sum(TOT_CIUDADANOS_VOTARON)
+  ) %>%
+  mutate(total_ausentes = total_electores - total_votaron) %>%
+  mutate (porcen_ausente = (total_ausentes * 100) / total_electores)
+```
+
+```{r}
+idhmetalima <- left_join(metametadata, idhlima) 
+```
+
+```{r antenor6, opts.label = "tablaOriginal"}
+idhmetalima %>%
+  sample_n(10)
+```
+
+```{r antenor6kable, opts.label = "tablaKable"}
+idhmetalima %>%
+  sample_n(10) %>% 
+  default_tbl("Muestra de 10 observaciones de 'idhmetalima'")
+```
+
+
+Para empezar, un primer indicador importante sería el Índice de Desarrollo Humano, un número compuesto de la esperanza de vida, nivel educativo y pbi, a modo de tratar de considerar multidimensionalmente la situación de la población de un territorio dado. 
+
+```{r antenor-g1, fig.cap="Relación entre IDH distrital y Ausentismo Electoral"}
+idhmetalima %>%
+  mutate(total_ausentes = total_electores - total_votaron) %>%
+  mutate(porcen_ausente = (total_ausentes * 100) / total_electores) %>%
+  select(DISTRITO, porcen_ausente, IDH) %>%
+  ggplot(aes(porcen_ausente, IDH, color = IDH)) +
+  geom_point() +
+  labs(
+    title = "Relación entre IDH distrital y Ausentismo Electoral",
+    subtitle = "Lima Metropolitana en las Elecciones del 2020",
+    x = "Porcentaje de Ausentismo Electoral",
+    y = "IDH Distrital",
+    caption = "Fuente: Oficina Nacional de Procesos Electorales y Instituto Nacional de Estadística e Informática"
+  ) +
+  theme_calc()
+```
+
+Como podemos observar, hay una relación positiva, pero débil (debido a la gran dispersión), entre un creciente Índice de Desarrollo Humano y la Tasa de Ausentismo Electoral. Parece ser que los distritos más afluentes tienen una población con mayor predisposición al ausentismo, lo cual contradice lo vertido por Almond y Verba.
+
+Teniendo en cuenta el aspecto compuesto de este índice respecto a salud, educación e ingresos, revisaré los Años de Educación, la Esperanza de Vida y los Ingresos Familiares per Cápita relacionándolos con la Tasa de Ausentismo.
+
+Al comparar con Años de Educación en Población de 25 años a Más observamos que el acceso a la educación superior supone un "umbral" después del cual la relación positiva entre años de educación y ausentismo se hace más fuerte y positiva. Contrario, nuevamente, a lo planteado por Almond y Verba, parece ser que el interés decrece con el nivel educativo.
+
+```{r antenor-g2, fig.cap="Relación entre Años de Educación por Distrito y Ausentismo Electoral"}
+idhmetalima %>%
+  mutate(total_ausentes = total_electores - total_votaron) %>%
+  mutate(porcen_ausente = (total_ausentes * 100) / total_electores) %>%
+  select(DISTRITO, porcen_ausente, Añoeduc25mas) %>%
+  ggplot(aes(porcen_ausente, Añoeduc25mas)) +
+  geom_point() +
+  labs(
+    title = "Relación entre Años de Educación por Distrito y Ausentismo Electoral",
+    subtitle = "Lima Metropolitana en las Elecciones del 2020",
+    x = "Porcentaje de Ausentismo Electoral",
+    y = "Años de Educación en Poblaciónde 25 años a Más",
+    caption = "Fuente: Oficina Nacional de Procesos Electorales y Instituto Nacional de Estadística e Informática"
+  ) +
+  theme_calc()
+```
+
+La Esperanza de Vida suele estar determinada por el acceso a salud, nutrición, aspectos genéticos, etc. El acceso a salud se vincula con los ingresos que pueden estar destinados a ello, por lo que una relación entre el IDH y la Esperanza de vida no se plantea como particularmente lejana. Sin embargo, como vemos en el gráfico Relación entre Esperanza de Vida y Ausentismo Electoral, no hay una relación clara que nos lleve a vincular el ausentismo con este aspecto.
+
+```{r antenor-g3, fig.cap="Relación entre Esperanza de Vida y Ausentismo Electoral"}
+idhmetalima %>%
+  mutate(total_ausentes = total_electores - total_votaron) %>%
+  mutate(porcen_ausente = (total_ausentes * 100) / total_electores) %>%
+  select(DISTRITO, porcen_ausente, Esperanzadevida) %>%
+  ggplot(aes(porcen_ausente, Esperanzadevida)) +
+  geom_point() +
+  labs(
+    title = "Relación entre Esperanza de Vida y Ausentismo Electoral",
+    subtitle = "Lima Metropolitana en las Elecciones del 2020",
+    caption = "Fuente: Oficina Nacional de Procesos Electorales y Instituto Nacional de Estadística e Informática",
+    x = "Porcentaje de Ausentismo Electoral",
+    y = "Esperanza de Vida"
+  ) +
+  theme_calc()
+```
+
+Finalmente, comparamos los Ingresos Familiares per Cápita con la Tasa de Ausentismo. Ahora vemos una relación menos fuerte, como con los años de educación, pero bastante positiva. Con excepción de los dos distritos outliers, si podemos observar una relación marcada y positiva. 
+
+```{r antenor-g4, fig.cap="Relación entre Ingresos Familiares per Capita por Distrito y Ausentismo Electoral"}
+idhmetalima %>%
+  mutate(total_ausentes = total_electores - total_votaron) %>%
+  mutate(porcen_ausente = (total_ausentes * 100) / total_electores) %>%
+  select(DISTRITO, porcen_ausente, Ingrefamperca) %>%
+  ggplot(aes(porcen_ausente, Ingrefamperca)) +
+  geom_point() +
+  labs(
+    title = "Relación entre Ingresos Familiares per Capita por Distrito y Ausentismo Electoral",
+    subtitle = "Lima Metropolitana en las Elecciones del 2020",
+    x = "Porcentaje de Ausentismo Electoral",
+    y = "Ingresos Familiares per Capita",
+    caption = "Fuente: Oficina Nacional de Procesos Electorales y Instituto Nacional de Estadística e Informática"
+  ) +
+  theme_calc() 
+```
+
+El vínculo entre años de estudio e ingresos suele traslaparse, pero, en este caso, siendo diferentes, han mostrado un mismo vínculo hacia una actitud positiva y relativamente fuerte hacia el ausentismo político. A mayor nivel educativo e ingresos, mayor ausentismo electoral. En el gráfico de abajo, además, agrego los años de educación en la población mayor a 25 años por cada distrito, confirmando lo afirmado.
+
+```{r antenor-g5, fig.cap="Relación entre Ingresos Familares per Cápita y Ausentismo Electoral"}
+idhmetalima %>%
+  mutate(total_ausentes = total_electores - total_votaron) %>%
+  mutate(porcen_ausente = (total_ausentes * 100) / total_electores) %>%
+  select(DISTRITO, porcen_ausente, Añoeduc25mas, Ingrefamperca) %>%
+  ggplot(aes(porcen_ausente, Ingrefamperca, size = Añoeduc25mas)) +
+  geom_point() +
+  labs(
+    title = "Relación entre Ingresos Familares per Cápita y Ausentismo Electoral",
+    subtitle = "Lima Metropolitana en las Elecciones del 2020",
+    x = "Porcentaje de Ausentismo Electoral",
+    y = "Ingresos Familares per Cápita"
+  ) +
+  labs(size = "Años de Educación", caption = "Fuente: Oficina Nacional de Procesos Electorales y Instituto Nacional de Estadística e Informática") +
+  theme_calc()
+```
+
+
+## Conclusiones
+
+El reconocido politólogo Robert A. Dahl (1961), haciendo un estudio de la dinámica política en la localidad de New Haven, descubrió notorias diferencias en el acceso a puestos públicos, siendo el origen de estas desigualdades el acceso a recursos (monetarios,  políticos, educativos, etc.); en ese sentido, había grupos que tenían mayores oportunidades de forma predeterminada en la contienda política. Esta situación había sido vista de forma más amplia respecto al caso estadounidense por Schattschneider (1967) el cuál declaraba que el "coro angelical" de la democracia cantaba con un tono marcado de "clase alta", al ver que la élite política era, también, la económica. Sumado a ello, Bachrach y Baratz (1970) plantearon que no solo esta élite era la que tenía más oportunidades, sino que debido a estas mismas desigualdades definían la agenda política, es decir "lo discutido" en la esfera pública.
+
+En ese sentido, el sistema político tiene ya un sesgo beneficioso a las clases altas, las cuales, teniendo mayores oportunidades para participar y fijando el espectro de los temas discutidos, lo que hace su involucramiento muchas veces redundante. 
+
+Como hemos visto con la relación de la Tasa de Ausentismo Electoral, el IDH, el Nivel Educativo y los Ingresos Familiares per Cápita, hay una relación positiva entre cuan afluente es un distrito y cuanto ausentismo este tuvo en las elecciones del 2020. Al parecer, la posibilidad de participación política es vista como un acceso a bienes y servicios públicos, tratandose como "bienes inferiores", osea un bien que deja de ser consumido cuando se obtienen mayores ingresos y como "costo de transacción" (costo de negociación) cuya necesidad es superada por el sesgo hacia las clases altas que tiene el sistema político.
+
+Aunque, ciertamente, sería interesante también comparar el nivel de ingresos y nivel educativo de cada candidatura del 2020 entre si y contrastada con la población en promedio, la idea preliminar que deja esta revisión nos deja un vínculo entre el nivel de ingreso y el acceso al poder político.
+
+
+Almond, Gabriel A. y Verba, Sidney (1970) La Cultura Cívica. Euroamérica, Madrid.
+
+Bachrach, Peter & Baratz, Morton S. (1970) Power & Poverty. Oxford University Press, Oxford.
+
+Dahl, Robert A. (1961) Who Governs. Yale University Press, Nueva York.
+
+Fernández-Alberto, José (2019) Antisistema. Libros de la Catarata, Madrid.
+
+Schattschneider, E. E. (1967) El Pueblo Semisoberano. UTEHA, México D.F.
