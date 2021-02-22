@@ -145,7 +145,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="0.5" data-path="sobre-los-autores.html"><a href="sobre-los-autores.html#christian-reyes"><i class="fa fa-check"></i><b>0.5</b> Christian Reyes</a></li>
 <li class="chapter" data-level="0.6" data-path="sobre-los-autores.html"><a href="sobre-los-autores.html#samuel-calderon"><i class="fa fa-check"></i><b>0.6</b> Samuel Calderon</a></li>
 </ul></li>
-<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introducción</a></li>
 <li class="chapter" data-level="2" data-path="trabajo-de-fiorella.html"><a href="trabajo-de-fiorella.html"><i class="fa fa-check"></i><b>2</b> Trabajo de Fiorella</a></li>
 <li class="chapter" data-level="3" data-path="ausentismo-en-las-elecciones-congresales-2020.html"><a href="ausentismo-en-las-elecciones-congresales-2020.html"><i class="fa fa-check"></i><b>3</b> Ausentismo en las Elecciones Congresales 2020</a>
 <ul>
@@ -195,25 +195,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">Capítulo 3</span> Ausentismo en las Elecciones Congresales 2020</h1>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggthemes)</span>
 <span id="cb3-2"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
-<pre><code>## ── Attaching packages ───────────────────────────────────── tidyverse 1.3.0 ──</code></pre>
-<pre><code>## ✓ ggplot2 3.3.3     ✓ purrr   0.3.4
-## ✓ tibble  3.0.5     ✓ dplyr   1.0.3
-## ✓ tidyr   1.1.2     ✓ stringr 1.4.0
-## ✓ readr   1.3.1     ✓ forcats 0.5.0</code></pre>
-<pre><code>## ── Conflicts ──────────────────────────────────────── tidyverse_conflicts() ──
-## x dplyr::filter() masks stats::filter()
-## x dplyr::lag()    masks stats::lag()</code></pre>
 <p>El ausentismo electoral ha sido un lastre a lo largo de los últimos 20 años de democracia, a nivel nacional y subnacional, dificilmente superando el 30% de votantes pero nunca debajo del 15%. Con ello, nos encontramos con la necesidad entender que puede incentivar dicha actitud, lo cual suele atribuirse al desinterés o la desafección hacia el sistema político o la política en sentido general.</p>
 <p><span class="citation"><a href="bibliografia.html#ref-almond1970" role="doc-biblioref">Almond and Verba</a> (<a href="bibliografia.html#ref-almond1970" role="doc-biblioref">1970</a>)</span> habían planteado el concepto de eficacia política para referirse a la autopercepción de capacidad influencia que una persona tiene sobre el sistema político y en su vida cotidiana. Esto, a su vez, fue vinculado con el nivel socioeconómico y, además, con el interés en la política (y el nivel educativo era un buen predictor de ello). Fernández (2019) va más lejos al vincular la precariedad a nivel de satisfacción de necesidades con la apatía política y el apoyo a partidos populistas de derecha, situando el caso Europeo y la reducción del estado de bienestar.</p>
 <p>Contando con la información brindada por la Oficina Nacional de Procesos Electorales y el Instituto Nacional de Estadística e Informática, intentaré establecer una relación entre los años de educación superior, la esperanza de vida, los ingresos familiares per capita y el IDH de los 43 distritos de Lima al vincularse al ausentismo electoral.</p>
 <p>Consciente de las grandes limitaciones en materia de información disponible, el análisis presentado servirá más de referencia sobre la interrelación entre la satisfacción de necesidades y la actitud hacia el sistema política.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb7-1" aria-hidden="true" tabindex="-1"></a>metadata <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/metadata.csv&quot;</span>)</span>
-<span id="cb7-2"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb7-2" aria-hidden="true" tabindex="-1"></a>idhdistrito <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/idhdistrito.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb4-1" aria-hidden="true" tabindex="-1"></a>metadata <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/metadata.csv&quot;</span>)</span>
+<span id="cb4-2"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb4-2" aria-hidden="true" tabindex="-1"></a>idhdistrito <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/idhdistrito.csv&quot;</span>)</span></code></pre></div>
 <div id="el-ausentismo-electoral-en-las-elecciones-del-2020" class="section level2" number="3.1">
 <h2><span class="header-section-number">3.1</span> El Ausentismo Electoral en las Elecciones del 2020</h2>
 <p>En las Elecciones Congresales del 2020, el ausentismo estuvo distribuido a lo largo de todas las circunscripciones. Para esto utilizo la base de datos metadata, la cual contiene información de la Oficina Nacional de Procesos Electorales sobre la participación electoral a nivel nacional.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb8-1" aria-hidden="true" tabindex="-1"></a>metadata <span class="sc">%&gt;%</span> </span>
-<span id="cb8-2"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sample_n</span>(<span class="dv">10</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb5-1" aria-hidden="true" tabindex="-1"></a>metadata <span class="sc">%&gt;%</span> </span>
+<span id="cb5-2"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sample_n</span>(<span class="dv">10</span>) </span></code></pre></div>
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:600px; overflow-x: scroll; width:100%; ">
 <table class="table table-striped table-hover table-condensed table-responsive" style="margin-left: auto; margin-right: auto;">
 <caption>
@@ -268,210 +260,34 @@ TOT_CIUDADANOS_VOTARON
 <tbody>
 <tr>
 <td style="text-align:left;">
-038222
+071125
 </td>
 <td style="text-align:left;">
-140106
+200905
 </td>
 <td style="text-align:left;">
-IEP SANTA MARÍA REYNA
+IES PEDAGOGICO PUBLICO JULIACA
 </td>
 <td style="text-align:left;">
-JR. VICENTE ANGULO Nº 300
+AV. INFANCIA 303
 </td>
 <td style="text-align:left;">
-C40035
-</td>
-<td style="text-align:left;">
-LIMA
-</td>
-<td style="text-align:left;">
-LIMA
-</td>
-<td style="text-align:left;">
-COMAS
-</td>
-<td style="text-align:left;">
-25T
-</td>
-<td style="text-align:right;">
-286
-</td>
-<td style="text-align:left;">
-CONTABILIZADAS NORMALES
-</td>
-<td style="text-align:left;">
-ACTA ELECTORAL NORMAL
-</td>
-<td style="text-align:right;">
-36
-</td>
-<td style="text-align:right;">
-211
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-006723
-</td>
-<td style="text-align:left;">
-040119
-</td>
-<td style="text-align:left;">
-IE 40199
-</td>
-<td style="text-align:left;">
-CALLE SANCHEZ TRUJILLO 301
-</td>
-<td style="text-align:left;">
-C40009
-</td>
-<td style="text-align:left;">
-AREQUIPA
-</td>
-<td style="text-align:left;">
-AREQUIPA
-</td>
-<td style="text-align:left;">
-SOCABAYA
-</td>
-<td style="text-align:left;">
-25A
-</td>
-<td style="text-align:right;">
-300
-</td>
-<td style="text-align:left;">
-CONTABILIZADAS NORMALES
-</td>
-<td style="text-align:left;">
-ACTA ELECTORAL NORMAL
-</td>
-<td style="text-align:right;">
-6
-</td>
-<td style="text-align:right;">
-245
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-058705
-</td>
-<td style="text-align:left;">
-140512
-</td>
-<td style="text-align:left;">
-IE 20374
-</td>
-<td style="text-align:left;">
-CALLE ROSA MERINO Nº 755
-</td>
-<td style="text-align:left;">
-C40044
-</td>
-<td style="text-align:left;">
-LIMA
-</td>
-<td style="text-align:left;">
-HUAURA
-</td>
-<td style="text-align:left;">
-SANTA MARIA
-</td>
-<td style="text-align:left;">
-27A
-</td>
-<td style="text-align:right;">
-289
-</td>
-<td style="text-align:left;">
-CONTABILIZADAS NORMALES
-</td>
-<td style="text-align:left;">
-ACTA ELECTORAL NORMAL
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-246
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-049952
-</td>
-<td style="text-align:left;">
-140134
-</td>
-<td style="text-align:left;">
-IE 390 -3 TAHUANTINSUYO
-</td>
-<td style="text-align:left;">
-AV. CORICANCHA SN
-</td>
-<td style="text-align:left;">
-C40035
-</td>
-<td style="text-align:left;">
-LIMA
-</td>
-<td style="text-align:left;">
-LIMA
-</td>
-<td style="text-align:left;">
-INDEPENDENCIA
-</td>
-<td style="text-align:left;">
-24J
-</td>
-<td style="text-align:right;">
-300
-</td>
-<td style="text-align:left;">
-CONTABILIZADAS NORMALES
-</td>
-<td style="text-align:left;">
-ACTA ELECTORAL NORMAL
-</td>
-<td style="text-align:right;">
-36
-</td>
-<td style="text-align:right;">
-258
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-071475
-</td>
-<td style="text-align:left;">
-201202
-</td>
-<td style="text-align:left;">
-IES TECNICO INDUSTRIAL MICAELA BASTIDAS
-</td>
-<td style="text-align:left;">
-AV. LOS INCAS SN
-</td>
-<td style="text-align:left;">
-C40055
+C40056
 </td>
 <td style="text-align:left;">
 PUNO
 </td>
 <td style="text-align:left;">
-EL COLLAO
+SAN ROMAN
 </td>
 <td style="text-align:left;">
-PILCUYO
+SAN MIGUEL
 </td>
 <td style="text-align:left;">
-23M
+32E
 </td>
 <td style="text-align:right;">
-267
+290
 </td>
 <td style="text-align:left;">
 CONTABILIZADAS NORMALES
@@ -483,36 +299,80 @@ ACTA ELECTORAL NORMAL
 5
 </td>
 <td style="text-align:right;">
-206
+270
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-007645
+061095
 </td>
 <td style="text-align:left;">
-040128
+150112
 </td>
 <td style="text-align:left;">
-IE 40029 LUDWING VAN BEETHOVEN
+IEIPS 60014 SANTO CRISTO DE BAZAGAN
 </td>
 <td style="text-align:left;">
-AV. FRANCISCO MOSTAJO 900
+CALLE 15 U-16 (PUEBLO JOVEN BAZAGAN)
 </td>
 <td style="text-align:left;">
-C40008
+C40047
 </td>
 <td style="text-align:left;">
-AREQUIPA
+LORETO
 </td>
 <td style="text-align:left;">
-AREQUIPA
+MAYNAS
 </td>
 <td style="text-align:left;">
-ALTO SELVA ALEGRE
+BELEN
 </td>
 <td style="text-align:left;">
-34J
+24M
+</td>
+<td style="text-align:right;">
+300
+</td>
+<td style="text-align:left;">
+CONTABILIZADAS NORMALES
+</td>
+<td style="text-align:left;">
+ACTA ELECTORAL RESUELTA
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+207
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+022528
+</td>
+<td style="text-align:left;">
+110113
+</td>
+<td style="text-align:left;">
+IE 30216 SAGRADO CORAZON DE MARIA
+</td>
+<td style="text-align:left;">
+JR. ANTONIO LOBATO 799
+</td>
+<td style="text-align:left;">
+C40026
+</td>
+<td style="text-align:left;">
+JUNIN
+</td>
+<td style="text-align:left;">
+HUANCAYO
+</td>
+<td style="text-align:left;">
+EL TAMBO
+</td>
+<td style="text-align:left;">
+22J
 </td>
 <td style="text-align:right;">
 300
@@ -524,42 +384,306 @@ CONTABILIZADAS NORMALES
 ACTA ELECTORAL NORMAL
 </td>
 <td style="text-align:right;">
-6
+5
 </td>
 <td style="text-align:right;">
-250
+251
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-045543
+004203
 </td>
 <td style="text-align:left;">
-140126
+030215
 </td>
 <td style="text-align:left;">
-IE 0065 LA CUNA
+IE TUPAC AMARU II
 </td>
 <td style="text-align:left;">
-AV. TUPAC AMARU SN
+PLAZA DE ARMAS
 </td>
 <td style="text-align:left;">
-C40034
+C40006
 </td>
 <td style="text-align:left;">
-LIMA
+APURIMAC
 </td>
 <td style="text-align:left;">
-LIMA
+AYMARAES
 </td>
 <td style="text-align:left;">
-SAN MARTIN DE PORRES
+YANACA
 </td>
 <td style="text-align:left;">
-33E
+26A
 </td>
 <td style="text-align:right;">
-278
+205
+</td>
+<td style="text-align:left;">
+CONTABILIZADAS NORMALES
+</td>
+<td style="text-align:left;">
+ACTA ELECTORAL NORMAL
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+124
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+076224
+</td>
+<td style="text-align:left;">
+240101
+</td>
+<td style="text-align:left;">
+IE REPUBLICA DE VENEZUELA
+</td>
+<td style="text-align:left;">
+AV. ARGENTINA 1030
+</td>
+<td style="text-align:left;">
+C40017
+</td>
+<td style="text-align:left;">
+CALLAO
+</td>
+<td style="text-align:left;">
+CALLAO
+</td>
+<td style="text-align:left;">
+CALLAO
+</td>
+<td style="text-align:left;">
+34T
+</td>
+<td style="text-align:right;">
+300
+</td>
+<td style="text-align:left;">
+CONTABILIZADAS NORMALES
+</td>
+<td style="text-align:left;">
+ACTA ELECTORAL NORMAL
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+242
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+058898
+</td>
+<td style="text-align:left;">
+140613
+</td>
+<td style="text-align:left;">
+IE 20575 JOSE ANTONIO ENCINAS
+</td>
+<td style="text-align:left;">
+AV. 5 DE SETIEMBRE 359
+</td>
+<td style="text-align:left;">
+C40046
+</td>
+<td style="text-align:left;">
+LIMA
+</td>
+<td style="text-align:left;">
+HUAROCHIRI
+</td>
+<td style="text-align:left;">
+RICARDO PALMA
+</td>
+<td style="text-align:left;">
+22F
+</td>
+<td style="text-align:right;">
+244
+</td>
+<td style="text-align:left;">
+CONTABILIZADAS NORMALES
+</td>
+<td style="text-align:left;">
+ACTA ELECTORAL NORMAL
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+187
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+014468
+</td>
+<td style="text-align:left;">
+070105
+</td>
+<td style="text-align:left;">
+IE REVOLUCIONARIA SANTA ROSA
+</td>
+<td style="text-align:left;">
+AV. VIA EXPRESA SN
+</td>
+<td style="text-align:left;">
+C40019
+</td>
+<td style="text-align:left;">
+CUSCO
+</td>
+<td style="text-align:left;">
+CUSCO
+</td>
+<td style="text-align:left;">
+SAN SEBASTIAN
+</td>
+<td style="text-align:left;">
+31J
+</td>
+<td style="text-align:right;">
+300
+</td>
+<td style="text-align:left;">
+CONTABILIZADAS NORMALES
+</td>
+<td style="text-align:left;">
+ACTA ELECTORAL NORMAL
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+249
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+900310
+</td>
+<td style="text-align:left;">
+030103
+</td>
+<td style="text-align:left;">
+IE 54019 CCOLLPA
+</td>
+<td style="text-align:left;">
+PLAZA DE ARMAS
+</td>
+<td style="text-align:left;">
+C40006
+</td>
+<td style="text-align:left;">
+APURIMAC
+</td>
+<td style="text-align:left;">
+ABANCAY
+</td>
+<td style="text-align:left;">
+CURAHUASI
+</td>
+<td style="text-align:left;">
+21E
+</td>
+<td style="text-align:right;">
+184
+</td>
+<td style="text-align:left;">
+CONTABILIZADAS NORMALES
+</td>
+<td style="text-align:left;">
+ACTA ELECTORAL NORMAL
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+134
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+079132
+</td>
+<td style="text-align:left;">
+250301
+</td>
+<td style="text-align:left;">
+IE HILDEBRANDO FUENTES
+</td>
+<td style="text-align:left;">
+CALLE ENE SN
+</td>
+<td style="text-align:left;">
+C40060
+</td>
+<td style="text-align:left;">
+UCAYALI
+</td>
+<td style="text-align:left;">
+ATALAYA
+</td>
+<td style="text-align:left;">
+RAIMONDI
+</td>
+<td style="text-align:left;">
+22I
+</td>
+<td style="text-align:right;">
+295
+</td>
+<td style="text-align:left;">
+CONTABILIZADAS NORMALES
+</td>
+<td style="text-align:left;">
+ACTA ELECTORAL NORMAL
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+182
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+055829
+</td>
+<td style="text-align:left;">
+140141
+</td>
+<td style="text-align:left;">
+IE 7228 PERUANO CANADIENSE
+</td>
+<td style="text-align:left;">
+AV. PERUANO CANADIENSE SN
+</td>
+<td style="text-align:left;">
+C40041
+</td>
+<td style="text-align:left;">
+LIMA
+</td>
+<td style="text-align:left;">
+LIMA
+</td>
+<td style="text-align:left;">
+VILLA EL SALVADOR
+</td>
+<td style="text-align:left;">
+27H
+</td>
+<td style="text-align:right;">
+295
 </td>
 <td style="text-align:left;">
 CONTABILIZADAS NORMALES
@@ -571,158 +695,26 @@ ACTA ELECTORAL NORMAL
 36
 </td>
 <td style="text-align:right;">
-222
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-063148
-</td>
-<td style="text-align:left;">
-170301
-</td>
-<td style="text-align:left;">
-IE DANIEL BECERRA OCAMPO
-</td>
-<td style="text-align:left;">
-AV. MARIANO LINO URQUIETA 588
-</td>
-<td style="text-align:left;">
-C40050
-</td>
-<td style="text-align:left;">
-MOQUEGUA
-</td>
-<td style="text-align:left;">
-ILO
-</td>
-<td style="text-align:left;">
-ILO
-</td>
-<td style="text-align:left;">
-28H
-</td>
-<td style="text-align:right;">
-300
-</td>
-<td style="text-align:left;">
-CONTABILIZADAS NORMALES
-</td>
-<td style="text-align:left;">
-ACTA ELECTORAL NORMAL
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
-246
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-010097
-</td>
-<td style="text-align:left;">
-050701
-</td>
-<td style="text-align:left;">
-IE 38454 V.P MARTIRES DE LA EDUCACION
-</td>
-<td style="text-align:left;">
-JR. ALAMEDA 114
-</td>
-<td style="text-align:left;">
-C40011
-</td>
-<td style="text-align:left;">
-AYACUCHO
-</td>
-<td style="text-align:left;">
-VICTOR FAJARDO
-</td>
-<td style="text-align:left;">
-HUANCAPI
-</td>
-<td style="text-align:left;">
-23T
-</td>
-<td style="text-align:right;">
-269
-</td>
-<td style="text-align:left;">
-CONTABILIZADAS NORMALES
-</td>
-<td style="text-align:left;">
-ACTA ELECTORAL NORMAL
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
-170
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-013739
-</td>
-<td style="text-align:left;">
-061206
-</td>
-<td style="text-align:left;">
-IE 82248
-</td>
-<td style="text-align:left;">
-AV. EL MAESTRO SN
-</td>
-<td style="text-align:left;">
-C40014
-</td>
-<td style="text-align:left;">
-CAJAMARCA
-</td>
-<td style="text-align:left;">
-SAN MARCOS
-</td>
-<td style="text-align:left;">
-JOSE SABOGAL
-</td>
-<td style="text-align:left;">
-25N
-</td>
-<td style="text-align:right;">
-274
-</td>
-<td style="text-align:left;">
-CONTABILIZADAS NORMALES
-</td>
-<td style="text-align:left;">
-ACTA ELECTORAL NORMAL
-</td>
-<td style="text-align:right;">
-6
-</td>
-<td style="text-align:right;">
-128
+263
 </td>
 </tr>
 </tbody>
 </table>
 </div>
 <p>Como observamos en las dos tablas siguientes, las tasas más altas de ausentismo se da entre la población peruana en el extranjero, posiblemente por cuestiones logísticas y flexible obligatoreidad. En lo que respecta al Perú, vemos como en Ica el porcentaje de ausentismo alcanza su nivel mínimo de 17,5%, mientras que en Loreto alcanza casi el 40%.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb9-1" aria-hidden="true" tabindex="-1"></a>metadata <span class="sc">%&gt;%</span></span>
-<span id="cb9-2"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(DEPARTAMENTO) <span class="sc">%&gt;%</span></span>
-<span id="cb9-3"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
-<span id="cb9-4"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">total_electores =</span> <span class="fu">sum</span>(NNUME_HABILM),</span>
-<span id="cb9-5"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb9-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">total_votaron =</span> <span class="fu">sum</span>(TOT_CIUDADANOS_VOTARON)</span>
-<span id="cb9-6"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb9-6" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb9-7"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb9-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb9-8"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb9-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">total_ausentes =</span> total_electores <span class="sc">-</span> total_votaron) <span class="sc">%&gt;%</span></span>
-<span id="cb9-9"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb9-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span> (<span class="at">porcen_ausente =</span> (total_ausentes <span class="sc">*</span> <span class="dv">100</span>) <span class="sc">/</span> total_electores) <span class="sc">%&gt;%</span></span>
-<span id="cb9-10"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb9-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(DEPARTAMENTO, porcen_ausente) <span class="sc">%&gt;%</span></span>
-<span id="cb9-11"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb9-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span> (<span class="fu">desc</span>(porcen_ausente)) <span class="sc">%&gt;%</span></span>
-<span id="cb9-12"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb9-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">rank =</span> <span class="fu">row_number</span>()) <span class="sc">%&gt;%</span></span>
-<span id="cb9-13"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb9-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(rank <span class="sc">&lt;=</span> <span class="dv">30</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb6-1" aria-hidden="true" tabindex="-1"></a>metadata <span class="sc">%&gt;%</span></span>
+<span id="cb6-2"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(DEPARTAMENTO) <span class="sc">%&gt;%</span></span>
+<span id="cb6-3"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb6-4"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">total_electores =</span> <span class="fu">sum</span>(NNUME_HABILM),</span>
+<span id="cb6-5"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">total_votaron =</span> <span class="fu">sum</span>(TOT_CIUDADANOS_VOTARON)</span>
+<span id="cb6-6"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb6-6" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb6-7"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb6-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb6-8"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb6-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">total_ausentes =</span> total_electores <span class="sc">-</span> total_votaron) <span class="sc">%&gt;%</span></span>
+<span id="cb6-9"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb6-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span> (<span class="at">porcen_ausente =</span> (total_ausentes <span class="sc">*</span> <span class="dv">100</span>) <span class="sc">/</span> total_electores) <span class="sc">%&gt;%</span></span>
+<span id="cb6-10"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb6-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(DEPARTAMENTO, porcen_ausente) <span class="sc">%&gt;%</span></span>
+<span id="cb6-11"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb6-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span> (<span class="fu">desc</span>(porcen_ausente)) <span class="sc">%&gt;%</span></span>
+<span id="cb6-12"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb6-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">rank =</span> <span class="fu">row_number</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb6-13"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb6-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(rank <span class="sc">&lt;=</span> <span class="dv">30</span>)</span></code></pre></div>
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:600px; overflow-x: scroll; width:100%; ">
 <table class="table table-striped table-hover table-condensed table-responsive" style="margin-left: auto; margin-right: auto;">
 <caption>
@@ -1075,19 +1067,19 @@ ICA
 </tbody>
 </table>
 </div>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb10-1" aria-hidden="true" tabindex="-1"></a>metadata <span class="sc">%&gt;%</span></span>
-<span id="cb10-2"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(DEPARTAMENTO) <span class="sc">%&gt;%</span></span>
-<span id="cb10-3"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
-<span id="cb10-4"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb10-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">total_electores =</span> <span class="fu">sum</span>(NNUME_HABILM),</span>
-<span id="cb10-5"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb10-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">total_votaron =</span> <span class="fu">sum</span>(TOT_CIUDADANOS_VOTARON)</span>
-<span id="cb10-6"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb10-6" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb10-7"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb10-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb10-8"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb10-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">total_ausentes =</span> total_electores <span class="sc">-</span> total_votaron) <span class="sc">%&gt;%</span></span>
-<span id="cb10-9"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb10-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span> (<span class="at">porcen_ausente =</span> (total_ausentes <span class="sc">*</span> <span class="dv">100</span>) <span class="sc">/</span> total_electores) <span class="sc">%&gt;%</span></span>
-<span id="cb10-10"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb10-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(DEPARTAMENTO, porcen_ausente) <span class="sc">%&gt;%</span></span>
-<span id="cb10-11"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb10-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(porcen_ausente) <span class="sc">%&gt;%</span></span>
-<span id="cb10-12"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb10-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">rank =</span> <span class="fu">row_number</span>()) <span class="sc">%&gt;%</span></span>
-<span id="cb10-13"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb10-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(rank <span class="sc">&lt;=</span> <span class="dv">30</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb7-1" aria-hidden="true" tabindex="-1"></a>metadata <span class="sc">%&gt;%</span></span>
+<span id="cb7-2"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(DEPARTAMENTO) <span class="sc">%&gt;%</span></span>
+<span id="cb7-3"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb7-4"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">total_electores =</span> <span class="fu">sum</span>(NNUME_HABILM),</span>
+<span id="cb7-5"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">total_votaron =</span> <span class="fu">sum</span>(TOT_CIUDADANOS_VOTARON)</span>
+<span id="cb7-6"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb7-6" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb7-7"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb7-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb7-8"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb7-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">total_ausentes =</span> total_electores <span class="sc">-</span> total_votaron) <span class="sc">%&gt;%</span></span>
+<span id="cb7-9"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb7-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span> (<span class="at">porcen_ausente =</span> (total_ausentes <span class="sc">*</span> <span class="dv">100</span>) <span class="sc">/</span> total_electores) <span class="sc">%&gt;%</span></span>
+<span id="cb7-10"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb7-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(DEPARTAMENTO, porcen_ausente) <span class="sc">%&gt;%</span></span>
+<span id="cb7-11"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb7-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(porcen_ausente) <span class="sc">%&gt;%</span></span>
+<span id="cb7-12"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb7-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">rank =</span> <span class="fu">row_number</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb7-13"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb7-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(rank <span class="sc">&lt;=</span> <span class="dv">30</span>)</span></code></pre></div>
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:600px; overflow-x: scroll; width:100%; ">
 <table class="table table-striped table-hover table-condensed table-responsive" style="margin-left: auto; margin-right: auto;">
 <caption>
@@ -1444,9 +1436,9 @@ ASIA
 <div id="el-ausentismo-electoral-en-lima-metropolitana" class="section level2" number="3.2">
 <h2><span class="header-section-number">3.2</span> El Ausentismo Electoral en Lima Metropolitana</h2>
 <p>Para revisar el caso limeño, utilizo la base de datos metadatalima, la cual es una versión de metadata filtrando las observaciones ubicadas en Lima Metropolitana.</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb11-1" aria-hidden="true" tabindex="-1"></a>metadatalima <span class="ot">&lt;-</span> metadata <span class="sc">%&gt;%</span> <span class="fu">filter</span>(PROVINCIA <span class="sc">==</span> <span class="st">&quot;LIMA&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb12-1" aria-hidden="true" tabindex="-1"></a>metadatalima <span class="sc">%&gt;%</span> </span>
-<span id="cb12-2"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sample_n</span>(<span class="dv">10</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb8-1" aria-hidden="true" tabindex="-1"></a>metadatalima <span class="ot">&lt;-</span> metadata <span class="sc">%&gt;%</span> <span class="fu">filter</span>(PROVINCIA <span class="sc">==</span> <span class="st">&quot;LIMA&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb9-1" aria-hidden="true" tabindex="-1"></a>metadatalima <span class="sc">%&gt;%</span> </span>
+<span id="cb9-2"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sample_n</span>(<span class="dv">10</span>)</span></code></pre></div>
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:600px; overflow-x: scroll; width:100%; ">
 <table class="table table-striped table-hover table-condensed table-responsive" style="margin-left: auto; margin-right: auto;">
 <caption>
@@ -1501,104 +1493,16 @@ TOT_CIUDADANOS_VOTARON
 <tbody>
 <tr>
 <td style="text-align:left;">
-053817
+036332
 </td>
 <td style="text-align:left;">
-140137
+140105
 </td>
 <td style="text-align:left;">
-IE FRANCISCO BOLOGNESI CERVANTES
+IE 2084 TROMPETEROS
 </td>
 <td style="text-align:left;">
-AV. FRANCISCO BOLOGNESI SN
-</td>
-<td style="text-align:left;">
-C40043
-</td>
-<td style="text-align:left;">
-LIMA
-</td>
-<td style="text-align:left;">
-LIMA
-</td>
-<td style="text-align:left;">
-SAN JUAN DE LURIGANCHO
-</td>
-<td style="text-align:left;">
-34F
-</td>
-<td style="text-align:right;">
-300
-</td>
-<td style="text-align:left;">
-CONTABILIZADAS NORMALES
-</td>
-<td style="text-align:left;">
-ACTA ELECTORAL NORMAL
-</td>
-<td style="text-align:right;">
-36
-</td>
-<td style="text-align:right;">
-236
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-041072
-</td>
-<td style="text-align:left;">
-140112
-</td>
-<td style="text-align:left;">
-IE 0051 JOSE FAUSTINO SANCHEZ CARRION
-</td>
-<td style="text-align:left;">
-AV. LAS CRUCES SN
-</td>
-<td style="text-align:left;">
-C40042
-</td>
-<td style="text-align:left;">
-LIMA
-</td>
-<td style="text-align:left;">
-LIMA
-</td>
-<td style="text-align:left;">
-LURIGANCHO
-</td>
-<td style="text-align:left;">
-26E
-</td>
-<td style="text-align:right;">
-300
-</td>
-<td style="text-align:left;">
-CONTABILIZADAS NORMALES
-</td>
-<td style="text-align:left;">
-ACTA ELECTORAL NORMAL
-</td>
-<td style="text-align:right;">
-36
-</td>
-<td style="text-align:right;">
-268
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-056754
-</td>
-<td style="text-align:left;">
-140142
-</td>
-<td style="text-align:left;">
-IE JOSE ABELARDO QUIÑONES GONZALES
-</td>
-<td style="text-align:left;">
-JR. TOMAS CATARI CON ANTONIO CABO SN
+AV. MARIA PARADO DE BELLIDO 195
 </td>
 <td style="text-align:left;">
 C40036
@@ -1610,13 +1514,13 @@ LIMA
 LIMA
 </td>
 <td style="text-align:left;">
-LOS OLIVOS
+CARABAYLLO
 </td>
 <td style="text-align:left;">
-23I
+27O
 </td>
 <td style="text-align:right;">
-262
+300
 </td>
 <td style="text-align:left;">
 CONTABILIZADAS NORMALES
@@ -1628,65 +1532,21 @@ ACTA ELECTORAL NORMAL
 36
 </td>
 <td style="text-align:right;">
-204
+229
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-054582
+035434
 </td>
 <td style="text-align:left;">
-140140
+140103
 </td>
 <td style="text-align:left;">
-IE 6079 SANTISIMA NIÑA MARIA
+IE 046 VICTOR RAUL HAYA DE LA TORRE INEI
 </td>
 <td style="text-align:left;">
-CALLE PABLO USANDIZAGA 300
-</td>
-<td style="text-align:left;">
-C40038
-</td>
-<td style="text-align:left;">
-LIMA
-</td>
-<td style="text-align:left;">
-LIMA
-</td>
-<td style="text-align:left;">
-SAN BORJA
-</td>
-<td style="text-align:left;">
-30T
-</td>
-<td style="text-align:right;">
-323
-</td>
-<td style="text-align:left;">
-CONTABILIZADAS NORMALES
-</td>
-<td style="text-align:left;">
-ACTA ELECTORAL NORMAL
-</td>
-<td style="text-align:right;">
-36
-</td>
-<td style="text-align:right;">
-265
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-038245
-</td>
-<td style="text-align:left;">
-140107
-</td>
-<td style="text-align:left;">
-IE 1188 JUAN PABLO II
-</td>
-<td style="text-align:left;">
-AV. UNION SN
+PLAZA PRINCIPAL
 </td>
 <td style="text-align:left;">
 C40042
@@ -1698,13 +1558,13 @@ LIMA
 LIMA
 </td>
 <td style="text-align:left;">
-CHACLACAYO
+ATE
 </td>
 <td style="text-align:left;">
-24T
+28H
 </td>
 <td style="text-align:right;">
-334
+300
 </td>
 <td style="text-align:left;">
 CONTABILIZADAS NORMALES
@@ -1716,39 +1576,39 @@ ACTA ELECTORAL NORMAL
 36
 </td>
 <td style="text-align:right;">
-267
+244
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-050063
+044778
 </td>
 <td style="text-align:left;">
-140135
+140126
 </td>
 <td style="text-align:left;">
-IE 1025 MARIA PARADO DE BELLIDO
+IE 2101 MARIA AUXILIADORA
 </td>
 <td style="text-align:left;">
-JR. CAJACAY SN
+CALLE CALIFORNIA SN
 </td>
 <td style="text-align:left;">
-C40043
-</td>
-<td style="text-align:left;">
-LIMA
+C40034
 </td>
 <td style="text-align:left;">
 LIMA
 </td>
 <td style="text-align:left;">
-EL AGUSTINO
+LIMA
 </td>
 <td style="text-align:left;">
-22A
+SAN MARTIN DE PORRES
+</td>
+<td style="text-align:left;">
+25H
 </td>
 <td style="text-align:right;">
-295
+298
 </td>
 <td style="text-align:left;">
 CONTABILIZADAS NORMALES
@@ -1760,21 +1620,109 @@ ACTA ELECTORAL NORMAL
 36
 </td>
 <td style="text-align:right;">
-254
+264
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-040285
+041107
 </td>
 <td style="text-align:left;">
-140110
+140113
 </td>
 <td style="text-align:left;">
-UNIVERSIDAD NACIONAL AGRARIA LA MOLINA
+IE 6023 JULIO C. TELLO ROJAS
 </td>
 <td style="text-align:left;">
-AV. LA MOLINA SN
+JR. JACARANDA SN
+</td>
+<td style="text-align:left;">
+C40040
+</td>
+<td style="text-align:left;">
+LIMA
+</td>
+<td style="text-align:left;">
+LIMA
+</td>
+<td style="text-align:left;">
+LURIN
+</td>
+<td style="text-align:left;">
+31N
+</td>
+<td style="text-align:right;">
+336
+</td>
+<td style="text-align:left;">
+CONTABILIZADAS NORMALES
+</td>
+<td style="text-align:left;">
+ACTA ELECTORAL NORMAL
+</td>
+<td style="text-align:right;">
+36
+</td>
+<td style="text-align:right;">
+289
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+034666
+</td>
+<td style="text-align:left;">
+140103
+</td>
+<td style="text-align:left;">
+IE 1229 JULIO ALBERTO PONCE ANTUNEZ DE MAYOLO
+</td>
+<td style="text-align:left;">
+JR. CUZCO 199
+</td>
+<td style="text-align:left;">
+C40042
+</td>
+<td style="text-align:left;">
+LIMA
+</td>
+<td style="text-align:left;">
+LIMA
+</td>
+<td style="text-align:left;">
+ATE
+</td>
+<td style="text-align:left;">
+22F
+</td>
+<td style="text-align:right;">
+300
+</td>
+<td style="text-align:left;">
+CONTABILIZADAS NORMALES
+</td>
+<td style="text-align:left;">
+ACTA ELECTORAL NORMAL
+</td>
+<td style="text-align:right;">
+36
+</td>
+<td style="text-align:right;">
+245
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+046648
+</td>
+<td style="text-align:left;">
+140130
+</td>
+<td style="text-align:left;">
+COLEGIO SANTA MARIA MARIANISTAS
+</td>
+<td style="text-align:left;">
+AV. LA FLORESTA 250
 </td>
 <td style="text-align:left;">
 C40039
@@ -1786,10 +1734,10 @@ LIMA
 LIMA
 </td>
 <td style="text-align:left;">
-LA MOLINA
+SANTIAGO DE SURCO
 </td>
 <td style="text-align:left;">
-31O
+25F
 </td>
 <td style="text-align:right;">
 340
@@ -1804,36 +1752,36 @@ ACTA ELECTORAL NORMAL
 36
 </td>
 <td style="text-align:right;">
-238
+237
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-048547
+051436
 </td>
 <td style="text-align:left;">
-140132
+140136
 </td>
 <td style="text-align:left;">
-IE 7057 SOBERANA ORDEN MILITAR DE MALTA
+IE SAN JUAN
 </td>
 <td style="text-align:left;">
-AV. PANDO EGUZQUIZA 501
+AV. GUILLERMO BILLINGHURST 812
 </td>
 <td style="text-align:left;">
-C40041
-</td>
-<td style="text-align:left;">
-LIMA
+C40040
 </td>
 <td style="text-align:left;">
 LIMA
 </td>
 <td style="text-align:left;">
-VILLA MARIA DEL TRIUNFO
+LIMA
 </td>
 <td style="text-align:left;">
-27T
+SAN JUAN DE MIRAFLORES
+</td>
+<td style="text-align:left;">
+31F
 </td>
 <td style="text-align:right;">
 300
@@ -1842,71 +1790,71 @@ VILLA MARIA DEL TRIUNFO
 CONTABILIZADAS NORMALES
 </td>
 <td style="text-align:left;">
-ACTA ELECTORAL NORMAL
+ACTA ELECTORAL RESUELTA
 </td>
 <td style="text-align:right;">
 36
 </td>
 <td style="text-align:right;">
-247
+234
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-039391
+037175
 </td>
 <td style="text-align:left;">
-140109
+140106
 </td>
 <td style="text-align:left;">
-IE 1119 NUESTRA SEÑORA DEL ROSARIO DE FATIMA
+IE 3047 CANADA
 </td>
 <td style="text-align:left;">
-JR. ABTAO 1101
+JR. LA HABANA SN
 </td>
 <td style="text-align:left;">
-C40038
-</td>
-<td style="text-align:left;">
-LIMA
+C40035
 </td>
 <td style="text-align:left;">
 LIMA
 </td>
 <td style="text-align:left;">
-LA VICTORIA
+LIMA
 </td>
 <td style="text-align:left;">
-27C
+COMAS
+</td>
+<td style="text-align:left;">
+27F
 </td>
 <td style="text-align:right;">
-252
+297
 </td>
 <td style="text-align:left;">
 CONTABILIZADAS NORMALES
 </td>
 <td style="text-align:left;">
-ACTA ELECTORAL NORMAL
+ACTA ELECTORAL RESUELTA
 </td>
 <td style="text-align:right;">
 36
 </td>
 <td style="text-align:right;">
-199
+240
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-042502
+056905
 </td>
 <td style="text-align:left;">
-140119
+140142
 </td>
 <td style="text-align:left;">
-IE 2081 PERU SUIZA
+IE 3095 PERU KAWACHI
 </td>
 <td style="text-align:left;">
-AV. LAS PALMERAS SN
+JR. JOSE CARLOS MARIATEGUI SN
 </td>
 <td style="text-align:left;">
 C40036
@@ -1918,13 +1866,13 @@ LIMA
 LIMA
 </td>
 <td style="text-align:left;">
-PUENTE PIEDRA
+LOS OLIVOS
 </td>
 <td style="text-align:left;">
-32I
+22I
 </td>
 <td style="text-align:right;">
-300
+295
 </td>
 <td style="text-align:left;">
 CONTABILIZADAS NORMALES
@@ -1939,23 +1887,67 @@ ACTA ELECTORAL NORMAL
 243
 </td>
 </tr>
+<tr>
+<td style="text-align:left;">
+036078
+</td>
+<td style="text-align:left;">
+140104
+</td>
+<td style="text-align:left;">
+CETPRO PROMAE BREÑA
+</td>
+<td style="text-align:left;">
+JR. FRANCISCO MAZZOCHIO 179
+</td>
+<td style="text-align:left;">
+C40032
+</td>
+<td style="text-align:left;">
+LIMA
+</td>
+<td style="text-align:left;">
+LIMA
+</td>
+<td style="text-align:left;">
+BREÑA
+</td>
+<td style="text-align:left;">
+25F
+</td>
+<td style="text-align:right;">
+300
+</td>
+<td style="text-align:left;">
+CONTABILIZADAS NORMALES
+</td>
+<td style="text-align:left;">
+ACTA ELECTORAL RESUELTA
+</td>
+<td style="text-align:right;">
+36
+</td>
+<td style="text-align:right;">
+228
+</td>
+</tr>
 </tbody>
 </table>
 </div>
 <p>En el caso de Lima este margen se mueve hacia un menor ausentismo. En comparación a la población nacional, el ausentismo mínimo es del 15,5%, en el distrito de Villa El Salvador, mientras que en el distrito de San Isidro se observa la máxima tasa de ausentismo con un 29.1%, casi un tercio de la población. En particular, las diferencias entre ambos distritos, como veremos adelante, tendrían un carácter económico bastante pronunciado.</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb13-1" aria-hidden="true" tabindex="-1"></a>metadatalima <span class="sc">%&gt;%</span></span>
-<span id="cb13-2"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(DISTRITO) <span class="sc">%&gt;%</span></span>
-<span id="cb13-3"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
-<span id="cb13-4"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb13-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">total_electores =</span> <span class="fu">sum</span>(NNUME_HABILM),</span>
-<span id="cb13-5"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb13-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">total_votaron =</span> <span class="fu">sum</span>(TOT_CIUDADANOS_VOTARON)</span>
-<span id="cb13-6"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb13-6" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb13-7"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb13-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb13-8"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb13-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">total_ausentes =</span> total_electores <span class="sc">-</span> total_votaron) <span class="sc">%&gt;%</span></span>
-<span id="cb13-9"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb13-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span> (<span class="at">porcen_ausente =</span> (total_ausentes <span class="sc">*</span> <span class="dv">100</span>) <span class="sc">/</span> total_electores) <span class="sc">%&gt;%</span></span>
-<span id="cb13-10"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb13-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(DISTRITO, porcen_ausente) <span class="sc">%&gt;%</span></span>
-<span id="cb13-11"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb13-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(porcen_ausente) <span class="sc">%&gt;%</span></span>
-<span id="cb13-12"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb13-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">rank =</span> <span class="fu">row_number</span>()) <span class="sc">%&gt;%</span></span>
-<span id="cb13-13"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb13-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(rank <span class="sc">&lt;=</span> <span class="dv">43</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb10-1" aria-hidden="true" tabindex="-1"></a>metadatalima <span class="sc">%&gt;%</span></span>
+<span id="cb10-2"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(DISTRITO) <span class="sc">%&gt;%</span></span>
+<span id="cb10-3"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb10-4"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb10-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">total_electores =</span> <span class="fu">sum</span>(NNUME_HABILM),</span>
+<span id="cb10-5"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb10-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">total_votaron =</span> <span class="fu">sum</span>(TOT_CIUDADANOS_VOTARON)</span>
+<span id="cb10-6"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb10-6" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb10-7"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb10-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb10-8"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb10-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">total_ausentes =</span> total_electores <span class="sc">-</span> total_votaron) <span class="sc">%&gt;%</span></span>
+<span id="cb10-9"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb10-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span> (<span class="at">porcen_ausente =</span> (total_ausentes <span class="sc">*</span> <span class="dv">100</span>) <span class="sc">/</span> total_electores) <span class="sc">%&gt;%</span></span>
+<span id="cb10-10"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb10-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(DISTRITO, porcen_ausente) <span class="sc">%&gt;%</span></span>
+<span id="cb10-11"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb10-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(porcen_ausente) <span class="sc">%&gt;%</span></span>
+<span id="cb10-12"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb10-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">rank =</span> <span class="fu">row_number</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb10-13"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb10-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(rank <span class="sc">&lt;=</span> <span class="dv">43</span>) </span></code></pre></div>
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:600px; overflow-x: scroll; width:100%; ">
 <table class="table table-striped table-hover table-condensed table-responsive" style="margin-left: auto; margin-right: auto;">
 <caption>
@@ -2456,20 +2448,20 @@ SAN ISIDRO
 <h2><span class="header-section-number">3.3</span> ¿Por qué hay Ausentismo Electoral en Lima?</h2>
 <p>Responder esta pregunta dependería de un análisis más profundo, detallado y con más información de la que dispongo en este momento, sin embargo, la comparación entre aspectos de cada distrito puede llevarnos a hacernos preguntas sobre el vínculo entre la situación de la población y la tendencia al ausentismo.</p>
 <p>Para este propósito utilizaré la base de datos idhmetalima. Es la conjunción de la base de datos metametadatalima, el cuál agregó el total de electores, el total de votantes, el total de ausentes y el porcentaje de ausentes a metadatalima. e idhlima, que tiene información sobre el nivel de IDH, esperanza de vida, nivel educativo e ingresos de los distritos de Lima Metropolitana.</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb14-1" aria-hidden="true" tabindex="-1"></a>idhlima <span class="ot">&lt;-</span> idhdistrito <span class="sc">%&gt;%</span></span>
-<span id="cb14-2"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">DISTRITO =</span> <span class="fu">str_to_upper</span>(DISTRITO))</span></code></pre></div>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb15-1" aria-hidden="true" tabindex="-1"></a>metametadata <span class="ot">&lt;-</span> metadatalima <span class="sc">%&gt;%</span></span>
-<span id="cb15-2"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(DISTRITO) <span class="sc">%&gt;%</span></span>
-<span id="cb15-3"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
-<span id="cb15-4"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb15-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">total_electores =</span> <span class="fu">sum</span>(NNUME_HABILM),</span>
-<span id="cb15-5"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb15-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">total_votaron =</span> <span class="fu">sum</span>(TOT_CIUDADANOS_VOTARON)</span>
-<span id="cb15-6"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb15-6" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb15-7"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb15-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">total_ausentes =</span> total_electores <span class="sc">-</span> total_votaron) <span class="sc">%&gt;%</span></span>
-<span id="cb15-8"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb15-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span> (<span class="at">porcen_ausente =</span> (total_ausentes <span class="sc">*</span> <span class="dv">100</span>) <span class="sc">/</span> total_electores)</span></code></pre></div>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb16-1" aria-hidden="true" tabindex="-1"></a>idhmetalima <span class="ot">&lt;-</span> <span class="fu">left_join</span>(metametadata, idhlima) </span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb11-1" aria-hidden="true" tabindex="-1"></a>idhlima <span class="ot">&lt;-</span> idhdistrito <span class="sc">%&gt;%</span></span>
+<span id="cb11-2"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">DISTRITO =</span> <span class="fu">str_to_upper</span>(DISTRITO))</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb12-1" aria-hidden="true" tabindex="-1"></a>metametadata <span class="ot">&lt;-</span> metadatalima <span class="sc">%&gt;%</span></span>
+<span id="cb12-2"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(DISTRITO) <span class="sc">%&gt;%</span></span>
+<span id="cb12-3"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb12-4"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb12-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">total_electores =</span> <span class="fu">sum</span>(NNUME_HABILM),</span>
+<span id="cb12-5"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb12-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">total_votaron =</span> <span class="fu">sum</span>(TOT_CIUDADANOS_VOTARON)</span>
+<span id="cb12-6"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb12-6" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb12-7"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb12-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">total_ausentes =</span> total_electores <span class="sc">-</span> total_votaron) <span class="sc">%&gt;%</span></span>
+<span id="cb12-8"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb12-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span> (<span class="at">porcen_ausente =</span> (total_ausentes <span class="sc">*</span> <span class="dv">100</span>) <span class="sc">/</span> total_electores)</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb13-1" aria-hidden="true" tabindex="-1"></a>idhmetalima <span class="ot">&lt;-</span> <span class="fu">left_join</span>(metametadata, idhlima) </span></code></pre></div>
 <pre><code>## Joining, by = &quot;DISTRITO&quot;</code></pre>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb18-1" aria-hidden="true" tabindex="-1"></a>idhmetalima <span class="sc">%&gt;%</span></span>
-<span id="cb18-2"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sample_n</span>(<span class="dv">10</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb15-1" aria-hidden="true" tabindex="-1"></a>idhmetalima <span class="sc">%&gt;%</span></span>
+<span id="cb15-2"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sample_n</span>(<span class="dv">10</span>)</span></code></pre></div>
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:600px; overflow-x: scroll; width:100%; ">
 <table class="table table-striped table-hover table-condensed table-responsive" style="margin-left: auto; margin-right: auto;">
 <caption>
@@ -2515,282 +2507,37 @@ IDH
 <tbody>
 <tr>
 <td style="text-align:left;">
-CHORRILLOS
+INDEPENDENCIA
 </td>
 <td style="text-align:right;">
-254466
+175045
 </td>
 <td style="text-align:right;">
-209555
+145682
 </td>
 <td style="text-align:right;">
-44911
+29363
 </td>
 <td style="text-align:right;">
-17.64912
+16.77454
 </td>
 <td style="text-align:right;">
-333655
+217177
 </td>
 <td style="text-align:right;">
-79.826
+80.043
 </td>
 <td style="text-align:right;">
-76.765
+76.324
 </td>
 <td style="text-align:right;">
-11.5
+8.8
 </td>
 <td style="text-align:right;">
-1662.8
+1443.3
 </td>
 <td style="text-align:right;">
-0.758
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-VILLA EL SALVADOR
-</td>
-<td style="text-align:right;">
-328611
-</td>
-<td style="text-align:right;">
-277471
-</td>
-<td style="text-align:right;">
-51140
-</td>
-<td style="text-align:right;">
-15.56247
-</td>
-<td style="text-align:right;">
-459161
-</td>
-<td style="text-align:right;">
-80.146
-</td>
-<td style="text-align:right;">
-74.385
-</td>
-<td style="text-align:right;">
-10.0
-</td>
-<td style="text-align:right;">
-1432.5
-</td>
-<td style="text-align:right;">
-0.699
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-SURQUILLO
-</td>
-<td style="text-align:right;">
-96756
-</td>
-<td style="text-align:right;">
-77720
-</td>
-<td style="text-align:right;">
-19036
-</td>
-<td style="text-align:right;">
-19.67423
-</td>
-<td style="text-align:right;">
-88766
-</td>
-<td style="text-align:right;">
-80.217
-</td>
-<td style="text-align:right;">
-79.577
-</td>
-<td style="text-align:right;">
-12.3
-</td>
-<td style="text-align:right;">
-1940.5
-</td>
-<td style="text-align:right;">
-0.817
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-PUNTA HERMOSA
-</td>
-<td style="text-align:right;">
-6361
-</td>
-<td style="text-align:right;">
-5176
-</td>
-<td style="text-align:right;">
-1185
-</td>
-<td style="text-align:right;">
-18.62915
-</td>
-<td style="text-align:right;">
-12551
-</td>
-<td style="text-align:right;">
-77.131
-</td>
-<td style="text-align:right;">
-67.896
-</td>
-<td style="text-align:right;">
-10.1
-</td>
-<td style="text-align:right;">
-1549.3
-</td>
-<td style="text-align:right;">
-0.696
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-CIENEGUILLA
-</td>
-<td style="text-align:right;">
-22613
-</td>
-<td style="text-align:right;">
-18796
-</td>
-<td style="text-align:right;">
-3817
-</td>
-<td style="text-align:right;">
-16.87967
-</td>
-<td style="text-align:right;">
-48261
-</td>
-<td style="text-align:right;">
-77.288
-</td>
-<td style="text-align:right;">
-69.643
-</td>
-<td style="text-align:right;">
-9.0
-</td>
-<td style="text-align:right;">
-1265.0
-</td>
-<td style="text-align:right;">
-0.637
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-LIMA
-</td>
-<td style="text-align:right;">
-310694
-</td>
-<td style="text-align:right;">
-247879
-</td>
-<td style="text-align:right;">
-62815
-</td>
-<td style="text-align:right;">
-20.21764
-</td>
-<td style="text-align:right;">
-250806
-</td>
-<td style="text-align:right;">
-80.237
-</td>
-<td style="text-align:right;">
-77.961
-</td>
-<td style="text-align:right;">
-12.0
-</td>
-<td style="text-align:right;">
-1633.8
-</td>
-<td style="text-align:right;">
-0.765
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-ATE
-</td>
-<td style="text-align:right;">
-455625
-</td>
-<td style="text-align:right;">
-369770
-</td>
-<td style="text-align:right;">
-85855
-</td>
-<td style="text-align:right;">
-18.84335
-</td>
-<td style="text-align:right;">
-684922
-</td>
-<td style="text-align:right;">
-79.624
-</td>
-<td style="text-align:right;">
-76.309
-</td>
-<td style="text-align:right;">
-9.2
-</td>
-<td style="text-align:right;">
-1425.4
-</td>
-<td style="text-align:right;">
-0.687
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-MIRAFLORES
-</td>
-<td style="text-align:right;">
-135475
-</td>
-<td style="text-align:right;">
-97190
-</td>
-<td style="text-align:right;">
-38285
-</td>
-<td style="text-align:right;">
-28.25983
-</td>
-<td style="text-align:right;">
-87899
-</td>
-<td style="text-align:right;">
-80.314
-</td>
-<td style="text-align:right;">
-77.784
-</td>
-<td style="text-align:right;">
-14.0
-</td>
-<td style="text-align:right;">
-1925.8
-</td>
-<td style="text-align:right;">
-0.833
+0.685
 </td>
 </tr>
 <tr>
@@ -2830,57 +2577,302 @@ SANTA ANITA
 </tr>
 <tr>
 <td style="text-align:left;">
-SAN BARTOLO
+SAN BORJA
 </td>
 <td style="text-align:right;">
-6241
+124959
 </td>
 <td style="text-align:right;">
-5178
+96045
 </td>
 <td style="text-align:right;">
-1063
+28914
 </td>
 <td style="text-align:right;">
-17.03253
+23.13879
 </td>
 <td style="text-align:right;">
-8667
+106585
 </td>
 <td style="text-align:right;">
-79.665
+80.641
 </td>
 <td style="text-align:right;">
-76.375
+78.763
 </td>
 <td style="text-align:right;">
-10.6
+13.6
 </td>
 <td style="text-align:right;">
-1528.4
+1867.9
 </td>
 <td style="text-align:right;">
-0.724
+0.824
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CHORRILLOS
+</td>
+<td style="text-align:right;">
+254466
+</td>
+<td style="text-align:right;">
+209555
+</td>
+<td style="text-align:right;">
+44911
+</td>
+<td style="text-align:right;">
+17.64912
+</td>
+<td style="text-align:right;">
+333655
+</td>
+<td style="text-align:right;">
+79.826
+</td>
+<td style="text-align:right;">
+76.765
+</td>
+<td style="text-align:right;">
+11.5
+</td>
+<td style="text-align:right;">
+1662.8
+</td>
+<td style="text-align:right;">
+0.758
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PUNTA HERMOSA
+</td>
+<td style="text-align:right;">
+6361
+</td>
+<td style="text-align:right;">
+5176
+</td>
+<td style="text-align:right;">
+1185
+</td>
+<td style="text-align:right;">
+18.62915
+</td>
+<td style="text-align:right;">
+12551
+</td>
+<td style="text-align:right;">
+77.131
+</td>
+<td style="text-align:right;">
+67.896
+</td>
+<td style="text-align:right;">
+10.1
+</td>
+<td style="text-align:right;">
+1549.3
+</td>
+<td style="text-align:right;">
+0.696
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+LURIN
+</td>
+<td style="text-align:right;">
+62329
+</td>
+<td style="text-align:right;">
+52623
+</td>
+<td style="text-align:right;">
+9706
+</td>
+<td style="text-align:right;">
+15.57221
+</td>
+<td style="text-align:right;">
+95909
+</td>
+<td style="text-align:right;">
+78.416
+</td>
+<td style="text-align:right;">
+70.974
+</td>
+<td style="text-align:right;">
+9.8
+</td>
+<td style="text-align:right;">
+1476.8
+</td>
+<td style="text-align:right;">
+0.691
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PACHACAMAC
+</td>
+<td style="text-align:right;">
+72690
+</td>
+<td style="text-align:right;">
+58589
+</td>
+<td style="text-align:right;">
+14101
+</td>
+<td style="text-align:right;">
+19.39882
+</td>
+<td style="text-align:right;">
+140978
+</td>
+<td style="text-align:right;">
+77.519
+</td>
+<td style="text-align:right;">
+70.892
+</td>
+<td style="text-align:right;">
+9.3
+</td>
+<td style="text-align:right;">
+1279.2
+</td>
+<td style="text-align:right;">
+0.646
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ANCON
+</td>
+<td style="text-align:right;">
+36406
+</td>
+<td style="text-align:right;">
+29567
+</td>
+<td style="text-align:right;">
+6839
+</td>
+<td style="text-align:right;">
+18.78536
+</td>
+<td style="text-align:right;">
+54956
+</td>
+<td style="text-align:right;">
+77.660
+</td>
+<td style="text-align:right;">
+72.118
+</td>
+<td style="text-align:right;">
+9.3
+</td>
+<td style="text-align:right;">
+1393.0
+</td>
+<td style="text-align:right;">
+0.669
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+SANTIAGO DE SURCO
+</td>
+<td style="text-align:right;">
+328026
+</td>
+<td style="text-align:right;">
+254257
+</td>
+<td style="text-align:right;">
+73769
+</td>
+<td style="text-align:right;">
+22.48877
+</td>
+<td style="text-align:right;">
+359777
+</td>
+<td style="text-align:right;">
+80.485
+</td>
+<td style="text-align:right;">
+78.743
+</td>
+<td style="text-align:right;">
+13.2
+</td>
+<td style="text-align:right;">
+1766.1
+</td>
+<td style="text-align:right;">
+0.802
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+JESUS MARIA
+</td>
+<td style="text-align:right;">
+117046
+</td>
+<td style="text-align:right;">
+91698
+</td>
+<td style="text-align:right;">
+25348
+</td>
+<td style="text-align:right;">
+21.65644
+</td>
+<td style="text-align:right;">
+74873
+</td>
+<td style="text-align:right;">
+80.419
+</td>
+<td style="text-align:right;">
+81.092
+</td>
+<td style="text-align:right;">
+13.0
+</td>
+<td style="text-align:right;">
+1989.8
+</td>
+<td style="text-align:right;">
+0.837
 </td>
 </tr>
 </tbody>
 </table>
 </div>
 <p>Para empezar, un primer indicador importante sería el Índice de Desarrollo Humano, un número compuesto de la esperanza de vida, nivel educativo y pbi, a modo de tratar de considerar multidimensionalmente la situación de la población de un territorio dado.</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb19-1" aria-hidden="true" tabindex="-1"></a>idhmetalima <span class="sc">%&gt;%</span></span>
-<span id="cb19-2"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">total_ausentes =</span> total_electores <span class="sc">-</span> total_votaron) <span class="sc">%&gt;%</span></span>
-<span id="cb19-3"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">porcen_ausente =</span> (total_ausentes <span class="sc">*</span> <span class="dv">100</span>) <span class="sc">/</span> total_electores) <span class="sc">%&gt;%</span></span>
-<span id="cb19-4"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(DISTRITO, porcen_ausente, IDH) <span class="sc">%&gt;%</span></span>
-<span id="cb19-5"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb19-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(porcen_ausente, IDH, <span class="at">color =</span> IDH)) <span class="sc">+</span></span>
-<span id="cb19-6"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb19-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb19-7"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb19-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb19-8"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb19-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Relación entre IDH distrital y Ausentismo Electoral&quot;</span>,</span>
-<span id="cb19-9"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb19-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">&quot;Lima Metropolitana en las Elecciones del 2020&quot;</span>,</span>
-<span id="cb19-10"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb19-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Porcentaje de Ausentismo Electoral&quot;</span>,</span>
-<span id="cb19-11"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb19-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;IDH Distrital&quot;</span>,</span>
-<span id="cb19-12"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb19-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">&quot;Fuente: Oficina Nacional de Procesos Electorales y Instituto Nacional de Estadística e Informática&quot;</span></span>
-<span id="cb19-13"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb19-13" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb19-14"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb19-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_calc</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb16-1" aria-hidden="true" tabindex="-1"></a>idhmetalima <span class="sc">%&gt;%</span></span>
+<span id="cb16-2"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">total_ausentes =</span> total_electores <span class="sc">-</span> total_votaron) <span class="sc">%&gt;%</span></span>
+<span id="cb16-3"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">porcen_ausente =</span> (total_ausentes <span class="sc">*</span> <span class="dv">100</span>) <span class="sc">/</span> total_electores) <span class="sc">%&gt;%</span></span>
+<span id="cb16-4"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(DISTRITO, porcen_ausente, IDH) <span class="sc">%&gt;%</span></span>
+<span id="cb16-5"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb16-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(porcen_ausente, IDH, <span class="at">color =</span> IDH)) <span class="sc">+</span></span>
+<span id="cb16-6"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb16-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb16-7"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb16-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb16-8"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb16-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Relación entre IDH distrital y Ausentismo Electoral&quot;</span>,</span>
+<span id="cb16-9"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb16-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">&quot;Lima Metropolitana en las Elecciones del 2020&quot;</span>,</span>
+<span id="cb16-10"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb16-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Porcentaje de Ausentismo Electoral&quot;</span>,</span>
+<span id="cb16-11"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb16-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;IDH Distrital&quot;</span>,</span>
+<span id="cb16-12"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb16-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">&quot;Fuente: Oficina Nacional de Procesos Electorales y Instituto Nacional de Estadística e Informática&quot;</span></span>
+<span id="cb16-13"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb16-13" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb16-14"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb16-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_calc</span>()</span></code></pre></div>
 <div class="figure"><span id="fig:antenor-g1"></span>
 <img src="grupo_2021_enero_febrero_files/figure-html/antenor-g1-1.png" alt="Relación entre IDH distrital y Ausentismo Electoral" width="672" />
 <p class="caption">
@@ -2890,20 +2882,20 @@ Gráfico 3.1: Relación entre IDH distrital y Ausentismo Electoral
 <p>Como podemos observar, hay una relación positiva, pero débil (debido a la gran dispersión), entre un creciente Índice de Desarrollo Humano y la Tasa de Ausentismo Electoral. Parece ser que los distritos más afluentes tienen una población con mayor predisposición al ausentismo, lo cual contradice lo vertido por Almond y Verba.</p>
 <p>Teniendo en cuenta el aspecto compuesto de este índice respecto a salud, educación e ingresos, revisaré los Años de Educación, la Esperanza de Vida y los Ingresos Familiares per Cápita relacionándolos con la Tasa de Ausentismo.</p>
 <p>Al comparar con Años de Educación en Población de 25 años a Más observamos que el acceso a la educación superior supone un “umbral” después del cual la relación positiva entre años de educación y ausentismo se hace más fuerte y positiva. Contrario, nuevamente, a lo planteado por Almond y Verba, parece ser que el interés decrece con el nivel educativo.</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb20-1" aria-hidden="true" tabindex="-1"></a>idhmetalima <span class="sc">%&gt;%</span></span>
-<span id="cb20-2"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">total_ausentes =</span> total_electores <span class="sc">-</span> total_votaron) <span class="sc">%&gt;%</span></span>
-<span id="cb20-3"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">porcen_ausente =</span> (total_ausentes <span class="sc">*</span> <span class="dv">100</span>) <span class="sc">/</span> total_electores) <span class="sc">%&gt;%</span></span>
-<span id="cb20-4"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb20-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(DISTRITO, porcen_ausente, Añoeduc25mas) <span class="sc">%&gt;%</span></span>
-<span id="cb20-5"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb20-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(porcen_ausente, Añoeduc25mas)) <span class="sc">+</span></span>
-<span id="cb20-6"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb20-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb20-7"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb20-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb20-8"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb20-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Relación entre Años de Educación por Distrito y Ausentismo Electoral&quot;</span>,</span>
-<span id="cb20-9"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb20-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">&quot;Lima Metropolitana en las Elecciones del 2020&quot;</span>,</span>
-<span id="cb20-10"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb20-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Porcentaje de Ausentismo Electoral&quot;</span>,</span>
-<span id="cb20-11"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb20-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Años de Educación en Poblaciónde 25 años a Más&quot;</span>,</span>
-<span id="cb20-12"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb20-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">&quot;Fuente: Oficina Nacional de Procesos Electorales y Instituto Nacional de Estadística e Informática&quot;</span></span>
-<span id="cb20-13"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb20-13" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb20-14"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb20-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_calc</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb17-1" aria-hidden="true" tabindex="-1"></a>idhmetalima <span class="sc">%&gt;%</span></span>
+<span id="cb17-2"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">total_ausentes =</span> total_electores <span class="sc">-</span> total_votaron) <span class="sc">%&gt;%</span></span>
+<span id="cb17-3"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">porcen_ausente =</span> (total_ausentes <span class="sc">*</span> <span class="dv">100</span>) <span class="sc">/</span> total_electores) <span class="sc">%&gt;%</span></span>
+<span id="cb17-4"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(DISTRITO, porcen_ausente, Añoeduc25mas) <span class="sc">%&gt;%</span></span>
+<span id="cb17-5"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb17-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(porcen_ausente, Añoeduc25mas)) <span class="sc">+</span></span>
+<span id="cb17-6"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb17-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb17-7"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb17-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb17-8"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb17-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Relación entre Años de Educación por Distrito y Ausentismo Electoral&quot;</span>,</span>
+<span id="cb17-9"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb17-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">&quot;Lima Metropolitana en las Elecciones del 2020&quot;</span>,</span>
+<span id="cb17-10"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb17-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Porcentaje de Ausentismo Electoral&quot;</span>,</span>
+<span id="cb17-11"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb17-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Años de Educación en Poblaciónde 25 años a Más&quot;</span>,</span>
+<span id="cb17-12"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb17-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">&quot;Fuente: Oficina Nacional de Procesos Electorales y Instituto Nacional de Estadística e Informática&quot;</span></span>
+<span id="cb17-13"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb17-13" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb17-14"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb17-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_calc</span>()</span></code></pre></div>
 <div class="figure"><span id="fig:antenor-g2"></span>
 <img src="grupo_2021_enero_febrero_files/figure-html/antenor-g2-1.png" alt="Relación entre Años de Educación por Distrito y Ausentismo Electoral" width="672" />
 <p class="caption">
@@ -2911,20 +2903,20 @@ Gráfico 3.2: Relación entre Años de Educación por Distrito y Ausentismo Elec
 </p>
 </div>
 <p>La Esperanza de Vida suele estar determinada por el acceso a salud, nutrición, aspectos genéticos, etc. El acceso a salud se vincula con los ingresos que pueden estar destinados a ello, por lo que una relación entre el IDH y la Esperanza de vida no se plantea como particularmente lejana. Sin embargo, como vemos en el gráfico Relación entre Esperanza de Vida y Ausentismo Electoral, no hay una relación clara que nos lleve a vincular el ausentismo con este aspecto.</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb21-1" aria-hidden="true" tabindex="-1"></a>idhmetalima <span class="sc">%&gt;%</span></span>
-<span id="cb21-2"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">total_ausentes =</span> total_electores <span class="sc">-</span> total_votaron) <span class="sc">%&gt;%</span></span>
-<span id="cb21-3"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">porcen_ausente =</span> (total_ausentes <span class="sc">*</span> <span class="dv">100</span>) <span class="sc">/</span> total_electores) <span class="sc">%&gt;%</span></span>
-<span id="cb21-4"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(DISTRITO, porcen_ausente, Esperanzadevida) <span class="sc">%&gt;%</span></span>
-<span id="cb21-5"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb21-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(porcen_ausente, Esperanzadevida)) <span class="sc">+</span></span>
-<span id="cb21-6"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb21-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb21-7"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb21-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb21-8"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb21-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Relación entre Esperanza de Vida y Ausentismo Electoral&quot;</span>,</span>
-<span id="cb21-9"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb21-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">&quot;Lima Metropolitana en las Elecciones del 2020&quot;</span>,</span>
-<span id="cb21-10"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb21-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">&quot;Fuente: Oficina Nacional de Procesos Electorales y Instituto Nacional de Estadística e Informática&quot;</span>,</span>
-<span id="cb21-11"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb21-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Porcentaje de Ausentismo Electoral&quot;</span>,</span>
-<span id="cb21-12"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb21-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Esperanza de Vida&quot;</span></span>
-<span id="cb21-13"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb21-13" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb21-14"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb21-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_calc</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb18-1" aria-hidden="true" tabindex="-1"></a>idhmetalima <span class="sc">%&gt;%</span></span>
+<span id="cb18-2"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">total_ausentes =</span> total_electores <span class="sc">-</span> total_votaron) <span class="sc">%&gt;%</span></span>
+<span id="cb18-3"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">porcen_ausente =</span> (total_ausentes <span class="sc">*</span> <span class="dv">100</span>) <span class="sc">/</span> total_electores) <span class="sc">%&gt;%</span></span>
+<span id="cb18-4"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(DISTRITO, porcen_ausente, Esperanzadevida) <span class="sc">%&gt;%</span></span>
+<span id="cb18-5"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb18-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(porcen_ausente, Esperanzadevida)) <span class="sc">+</span></span>
+<span id="cb18-6"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb18-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb18-7"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb18-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb18-8"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb18-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Relación entre Esperanza de Vida y Ausentismo Electoral&quot;</span>,</span>
+<span id="cb18-9"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb18-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">&quot;Lima Metropolitana en las Elecciones del 2020&quot;</span>,</span>
+<span id="cb18-10"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb18-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">&quot;Fuente: Oficina Nacional de Procesos Electorales y Instituto Nacional de Estadística e Informática&quot;</span>,</span>
+<span id="cb18-11"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb18-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Porcentaje de Ausentismo Electoral&quot;</span>,</span>
+<span id="cb18-12"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb18-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Esperanza de Vida&quot;</span></span>
+<span id="cb18-13"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb18-13" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb18-14"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb18-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_calc</span>()</span></code></pre></div>
 <div class="figure"><span id="fig:antenor-g3"></span>
 <img src="grupo_2021_enero_febrero_files/figure-html/antenor-g3-1.png" alt="Relación entre Esperanza de Vida y Ausentismo Electoral" width="672" />
 <p class="caption">
@@ -2932,20 +2924,20 @@ Gráfico 3.3: Relación entre Esperanza de Vida y Ausentismo Electoral
 </p>
 </div>
 <p>Finalmente, comparamos los Ingresos Familiares per Cápita con la Tasa de Ausentismo. Ahora vemos una relación menos fuerte, como con los años de educación, pero bastante positiva. Con excepción de los dos distritos outliers, si podemos observar una relación marcada y positiva.</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb22-1" aria-hidden="true" tabindex="-1"></a>idhmetalima <span class="sc">%&gt;%</span></span>
-<span id="cb22-2"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">total_ausentes =</span> total_electores <span class="sc">-</span> total_votaron) <span class="sc">%&gt;%</span></span>
-<span id="cb22-3"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">porcen_ausente =</span> (total_ausentes <span class="sc">*</span> <span class="dv">100</span>) <span class="sc">/</span> total_electores) <span class="sc">%&gt;%</span></span>
-<span id="cb22-4"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(DISTRITO, porcen_ausente, Ingrefamperca) <span class="sc">%&gt;%</span></span>
-<span id="cb22-5"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb22-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(porcen_ausente, Ingrefamperca)) <span class="sc">+</span></span>
-<span id="cb22-6"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb22-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb22-7"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb22-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb22-8"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb22-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Relación entre Ingresos Familiares per Capita por Distrito y Ausentismo Electoral&quot;</span>,</span>
-<span id="cb22-9"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb22-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">&quot;Lima Metropolitana en las Elecciones del 2020&quot;</span>,</span>
-<span id="cb22-10"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb22-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Porcentaje de Ausentismo Electoral&quot;</span>,</span>
-<span id="cb22-11"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb22-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Ingresos Familiares per Capita&quot;</span>,</span>
-<span id="cb22-12"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb22-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">&quot;Fuente: Oficina Nacional de Procesos Electorales y Instituto Nacional de Estadística e Informática&quot;</span></span>
-<span id="cb22-13"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb22-13" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb22-14"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb22-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_calc</span>() </span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb19-1" aria-hidden="true" tabindex="-1"></a>idhmetalima <span class="sc">%&gt;%</span></span>
+<span id="cb19-2"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">total_ausentes =</span> total_electores <span class="sc">-</span> total_votaron) <span class="sc">%&gt;%</span></span>
+<span id="cb19-3"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">porcen_ausente =</span> (total_ausentes <span class="sc">*</span> <span class="dv">100</span>) <span class="sc">/</span> total_electores) <span class="sc">%&gt;%</span></span>
+<span id="cb19-4"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(DISTRITO, porcen_ausente, Ingrefamperca) <span class="sc">%&gt;%</span></span>
+<span id="cb19-5"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb19-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(porcen_ausente, Ingrefamperca)) <span class="sc">+</span></span>
+<span id="cb19-6"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb19-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb19-7"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb19-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb19-8"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb19-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Relación entre Ingresos Familiares per Capita por Distrito y Ausentismo Electoral&quot;</span>,</span>
+<span id="cb19-9"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb19-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">&quot;Lima Metropolitana en las Elecciones del 2020&quot;</span>,</span>
+<span id="cb19-10"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb19-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Porcentaje de Ausentismo Electoral&quot;</span>,</span>
+<span id="cb19-11"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb19-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Ingresos Familiares per Capita&quot;</span>,</span>
+<span id="cb19-12"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb19-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">&quot;Fuente: Oficina Nacional de Procesos Electorales y Instituto Nacional de Estadística e Informática&quot;</span></span>
+<span id="cb19-13"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb19-13" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb19-14"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb19-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_calc</span>() </span></code></pre></div>
 <div class="figure"><span id="fig:antenor-g4"></span>
 <img src="grupo_2021_enero_febrero_files/figure-html/antenor-g4-1.png" alt="Relación entre Ingresos Familiares per Capita por Distrito y Ausentismo Electoral" width="672" />
 <p class="caption">
@@ -2953,20 +2945,20 @@ Gráfico 3.4: Relación entre Ingresos Familiares per Capita por Distrito y Ause
 </p>
 </div>
 <p>El vínculo entre años de estudio e ingresos suele traslaparse, pero, en este caso, siendo diferentes, han mostrado un mismo vínculo hacia una actitud positiva y relativamente fuerte hacia el ausentismo político. A mayor nivel educativo e ingresos, mayor ausentismo electoral. En el gráfico de abajo, además, agrego los años de educación en la población mayor a 25 años por cada distrito, confirmando lo afirmado.</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb23-1" aria-hidden="true" tabindex="-1"></a>idhmetalima <span class="sc">%&gt;%</span></span>
-<span id="cb23-2"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">total_ausentes =</span> total_electores <span class="sc">-</span> total_votaron) <span class="sc">%&gt;%</span></span>
-<span id="cb23-3"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">porcen_ausente =</span> (total_ausentes <span class="sc">*</span> <span class="dv">100</span>) <span class="sc">/</span> total_electores) <span class="sc">%&gt;%</span></span>
-<span id="cb23-4"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb23-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(DISTRITO, porcen_ausente, Añoeduc25mas, Ingrefamperca) <span class="sc">%&gt;%</span></span>
-<span id="cb23-5"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb23-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(porcen_ausente, Ingrefamperca, <span class="at">size =</span> Añoeduc25mas)) <span class="sc">+</span></span>
-<span id="cb23-6"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb23-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb23-7"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb23-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb23-8"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb23-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Relación entre Ingresos Familares per Cápita y Ausentismo Electoral&quot;</span>,</span>
-<span id="cb23-9"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb23-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">&quot;Lima Metropolitana en las Elecciones del 2020&quot;</span>,</span>
-<span id="cb23-10"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb23-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Porcentaje de Ausentismo Electoral&quot;</span>,</span>
-<span id="cb23-11"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb23-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Ingresos Familares per Cápita&quot;</span></span>
-<span id="cb23-12"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb23-12" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb23-13"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb23-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">size =</span> <span class="st">&quot;Años de Educación&quot;</span>, <span class="at">caption =</span> <span class="st">&quot;Fuente: Oficina Nacional de Procesos Electorales y Instituto Nacional de Estadística e Informática&quot;</span>) <span class="sc">+</span></span>
-<span id="cb23-14"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb23-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_calc</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb20-1" aria-hidden="true" tabindex="-1"></a>idhmetalima <span class="sc">%&gt;%</span></span>
+<span id="cb20-2"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">total_ausentes =</span> total_electores <span class="sc">-</span> total_votaron) <span class="sc">%&gt;%</span></span>
+<span id="cb20-3"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">porcen_ausente =</span> (total_ausentes <span class="sc">*</span> <span class="dv">100</span>) <span class="sc">/</span> total_electores) <span class="sc">%&gt;%</span></span>
+<span id="cb20-4"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb20-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(DISTRITO, porcen_ausente, Añoeduc25mas, Ingrefamperca) <span class="sc">%&gt;%</span></span>
+<span id="cb20-5"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb20-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(porcen_ausente, Ingrefamperca, <span class="at">size =</span> Añoeduc25mas)) <span class="sc">+</span></span>
+<span id="cb20-6"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb20-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb20-7"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb20-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb20-8"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb20-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Relación entre Ingresos Familares per Cápita y Ausentismo Electoral&quot;</span>,</span>
+<span id="cb20-9"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb20-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">&quot;Lima Metropolitana en las Elecciones del 2020&quot;</span>,</span>
+<span id="cb20-10"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb20-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Porcentaje de Ausentismo Electoral&quot;</span>,</span>
+<span id="cb20-11"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb20-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Ingresos Familares per Cápita&quot;</span></span>
+<span id="cb20-12"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb20-12" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb20-13"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb20-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">size =</span> <span class="st">&quot;Años de Educación&quot;</span>, <span class="at">caption =</span> <span class="st">&quot;Fuente: Oficina Nacional de Procesos Electorales y Instituto Nacional de Estadística e Informática&quot;</span>) <span class="sc">+</span></span>
+<span id="cb20-14"><a href="ausentismo-en-las-elecciones-congresales-2020.html#cb20-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_calc</span>()</span></code></pre></div>
 <div class="figure"><span id="fig:antenor-g5"></span>
 <img src="grupo_2021_enero_febrero_files/figure-html/antenor-g5-1.png" alt="Relación entre Ingresos Familares per Cápita y Ausentismo Electoral" width="672" />
 <p class="caption">
