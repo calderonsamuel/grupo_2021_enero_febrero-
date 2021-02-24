@@ -1,5 +1,3 @@
-fig:nice-fig
-tab:nice-tab
 tab:antenor1kable
 tab:antenor2kable
 tab:antenor3kable
@@ -21,7 +19,6 @@ fig:chris-org2
 isabel-calderon
 sandra-cerna
 antenor-escudero
-diana-quispe
 christian-reyes
 samuel-calderon
 intro
@@ -31,7 +28,7 @@ el-ausentismo-electoral-en-las-elecciones-del-2020
 el-ausentismo-electoral-en-lima-metropolitana
 por-qué-hay-ausentismo-electoral-en-lima
 conclusiones
-la-política-es-ancha-y-ajena-participación-política-de-la-mujer-en-las-elecciones-congresales
+participacion-mujeres
 análisis-histórico-desde-las-elecciones-congresales-desde-1995-hasta-2016
 participación-de-mujeres-en-las-elecciones-congresales-del-2001-por-distrito-electoral
 participación-de-mujeres-en-las-elecciones-congresales-del-2006-por-distrito-electoral
@@ -41,5 +38,15 @@ mujeres-y-organizaciones-políticas-nivel-de-participación-de-mujeres-desde-las
 elecciones-congresales-de-1995
 elecciones-congresales-de-2016
 conclusion
-trabajo-de-diana
 trabajo-de-sandra
+bases-de-datos-a-usar
+a-continuación-se-han-seleccionado-solamente-las-variables-relevantes.
+modificación-del-nombre-de-una-variable
+modificación-del-nombre-de-una-variable-1
+modificación-del-nombre-de-una-variable-2
+creación-de-la-base-general-2012-2017
+conversión-de-las-columnas-labelled-a-factor
+total-de-accidentes-registrados-por-la-pnp-desde-2012-al-primer-semestre-del-2017
+total-de-accidentes-que-involucraron-una-bicicleta-desde-2012-al-primer-semestre-del-2017
+gráfico-del-total-de-accidentes-de-tránsito-que-involucraron-a-una-bicicleta-desde-2012-hasta-el-primer-semestre-de-2017
+gráfico-del-total-de-accidentes-de-tránsito-desde-2012-hasta-el-primer-semestre-de-2017

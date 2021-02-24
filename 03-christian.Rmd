@@ -1,4 +1,9 @@
-# ¿La política es ancha y ajena?: Participación política de la mujer en las elecciones congresales
+# ¿La política es ancha y ajena?: Participación política de la mujer en las elecciones congresales {#participacion-mujeres}
+
+```{r}
+knitr::opts_chunk$set(fig.align = "center")
+```
+
 
 Historicamente la representación política esta enmarcada porla elección de representantes mediante el voto ciudadano. No obstante, existen características extrínsecas propios del concepto de ciudadania, por ende, el significado de representación política ha variado producto de los diversos cambios que han ocurrido historicamente.
 Para la elaboración de este ensayo se utilizarán los siguientes paquetes: Tidyverse, readxl y ggthemes. Estos permitirán: manipular, importar, explorar y representar gráficamente el análisis que se pretende mostrar.
