@@ -1,6 +1,6 @@
 --- 
 title: 'Entrenamiento en productos de datos: R Markdown'
-author: "Samuel Calderon, Isabel Calderon, Sandra Cerna, Antenor Escudero, Christian Reyes"
+author: "Samuel Calderon, Sandra Cerna, Antenor Escudero, Christian Reyes"
 date: "`r Sys.Date()`"
 output: pdf_document
 documentclass: book
@@ -28,44 +28,41 @@ En primer lugar, el comentario que dieron en común cuando tuvieron que presenta
 
 El segundo desafío está relacionado con las condiciones en las que se brinda la educación no presencial. Por lo general, las condiciones son malas: deficiente calidad de señal de internet, falta de ambientes adecuados en la vivienda para atender las clases, computadoras de varios años de antigüedad y dificultad de poder realmente dedicarse exclusivamente a la sesión durante su duración completa por diferentes motivos. Estas dificultades no han sido exclusivas de este taller, sino que en general describen las condiciones en que se ha tenido que brindar la educación no presencial en nuestro país.
 
-Por último, la pandemia por el covid 19. Además de obligarnos a ejecutar el taller en modalidad no presencial, fue un motivo directo para que varios participantes simplemente ya no pudieran continuar con las sesiones, ya sea porque enfermaron ellos mismos o una persona cercana que requirió su atención. Nuevamente, este es un hecho que se replica en toda la población estudiantil del país y el mundo. Espero que cuando los participantes afectados puedan recuperarse podamos encontrar un tiempo para completar las sesiones con ellos e incluirlos en este libro digital.
+Por último, la pandemia por el covid 19. Además de obligarnos a ejecutar el taller en modalidad no presencial, fue un motivo directo para que varios participantes simplemente ya no pudieran continuar con las sesiones, ya sea porque enfermaron ellos mismos o una persona cercana que requirió su atención. Nuevamente, este es un hecho que se replica en toda la población estudiantil del país y el mundo. Espero que cuando los participantes afectados puedan recuperarse podamos encontrar un tiempo para completar las sesiones con ellos e incluirlos en este producto digital.
 
 Este libro busca ser una compilación de los trabajos realizados como proyecto final para el Taller de Elaboración de productos de datos. Está pensado como una vitrina en la que los participantes puedan exhibir que han adquirido los conocimientos esperados en el taller:
 
-1. Elaborar reportes de análisis de datos usando R Markdown y el flujo de trabajo de Proyectos en RStudio.
-2. Obtener información releva
+1. Elaborar cuadros y gráficos **explorativos** sobre variables específicas en set de datos relacionados a sus intereses.
+2. Elaborar reportes de análisis de datos usando R Markdown y el flujo de trabajo de Proyectos en RStudio.
+
+Los trabajos han requerido modificaciones mínimas, hechas por mí, exclusivamente para poder numerar las tablas y gráficos siguiendo el estilo de `bookdown`. Es probable que un ojo más entrenado que el de los autores en el lenguaje estadístico R encuentre que el código que usaron es perfectible. La idea de mantenerlo como ellos lo produjeron es que ese ojo pueda ser el de ellos mismos en el futuro.
 
 *Samuel Calderon*
 
 # Sobre los autores {-}
 
-## Isabel Calderon
+<!-- ## Isabel Calderon {-} -->
 
-Experiencia previa con código:
-Experiencia previa de análisis de datos:
-Formación profesional:
-Región de la que proviene:
-Experiencia laboral:
-Temas de interés:
+<!-- Experiencia previa con código: -->
+<!-- Experiencia previa de análisis de datos: -->
+<!-- Formación profesional: -->
+<!-- Región de la que proviene: -->
+<!-- Experiencia laboral: -->
+<!-- Temas de interés: -->
 
-## Sandra Cerna
+## Sandra Cerna {-}
 
-Experiencia previa con código:
-Experiencia previa de análisis de datos:
-Formación profesional:
-Región de la que proviene:
-Experiencia laboral:
-Temas de interés:
+Politóloga de la Universidad Antonio Ruiz de Montoya. Anteriormente, trabajó como asistente de investigación en distintos proyectos y consultorías en temas de Educación, Ciencias Sociales y Economía. Tiene afición por los idiomas y esto se tradujo en el interés por lenguajes de programación, que exploró de manera muy superficial hace algunos años. Actualmente, trabaja en la Escuela Nacional de Administración Pública (SERVIR) y, además, se desempeña como docente de inglés, japonés y español para extranjeros. Le interesan los temas de movimientos sociales, sociología política y planificación urbana. Desde 2019 es miembro de CicloAxión, colectivo de ciclistas urbanos que promueve el uso de la bicicleta como medio de transporte. 
 
-## Antenor Escudero
+## Antenor Escudero {-}
 
 Politólogo de la Universidad Antonio Ruiz de Montoya. Diplomado en Economía del Comportamiento, por la Universidad del Pacífico. Estudiante de Maestria en Ciencias Políticas y Relaciones Internacionales, especialización en Política Comparada, por la Pontificia Universidad Católica del Perú. Antes del taller no ha tenido experiencia en ningún lenguaje de programación ni en análisis de datos. Tiene experiencia laboral en el sector público, privado y de manera independiente, siendo las más recientes en el Centro Nacional de Planeamiento Estratégico - CEPLAN, Profesor Particular en Tu Profe En Casa, Asistente de clase de Teoría Política II y Temas de Ciencia Política en la Escuela Académico-Profesional de Ciencia Política, Universidad Antonio Ruiz de Montoya. Tiene interés en los temas de comportamiento político, psicología política, desigualdad, clases sociales, participación ciudadana, entre otros.
 
-## Christian Reyes
+## Christian Reyes {-}
 
 Politólogo de la Universidad Antonio Ruiz de Montoya. Previo al taller no ha tenido experiencia en el uso de R para el análisis de datos, pero sí el uso de herramientas como Microsoft Excel. Sus últimas experiencias laborales fueron dentro del sector público (Ministerio de Transportes y Comunicaciones, y Ministerio de Vivienda, Construcción y Saneamiento) realizando labores de elaboración y análisis de encuestas y cuestionarios,  monitoreo del curso virtual “Programa para Formadores de Integridad” y Seguimiento al Plan de Lucha Contra la Corrupción del sector Vivienda. Le interesan los temas de sistemas electorales, participación y representación política, ética e integridad, entre otros.
 
-## Samuel Calderon
+## Samuel Calderon {-}
 
 Politólogo de la Universidad Antonio Ruiz de Montoya. Fue el encargado de dictar el taller. Actualmente trabaja en la Superintendencia Nacional de Educación Universitaria - SUNEDU como miembro del Equipo Técnico Normativo de la Dirección de Licenciamiento. Aprendió a usar R el año 2019 y desde entonces ha tratado de "convertir" a otras personas. Miembro de la organización [DecideBien](https://github.com/DecideBienpe), colabora ocasionalmente en iniciativas de código abierto. Proviene de Lima, Perú. Su experiencia laboral ha sido siempre en el sector público (Instituto Nacional de Estadística e Informática, Ministerio de Salud, Escuela Nacional de Administración Pública, Ministerio de Vivienda, Ministerio de Educación, SUNEDU). Tiene interés en los temas de educación superior, organizaciones electorales y datos abiertos.
 

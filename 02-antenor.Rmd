@@ -14,7 +14,9 @@ knitr::opts_chunk$set(fig.align = "center")
 ```
 
 
-# Ausentismo en las Elecciones Congresales 2020
+# Ausentismo en las Elecciones Congresales 2020 {#ausentismo}
+
+*Antenor Escudero Gomez*
 
 ```{r, message=TRUE, warning=TRUE}
 library(ggthemes)

@@ -1,103 +1,81 @@
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = TRUE, fig.align = "center")
+
+knitr::opts_template$set(
+  tablaOriginal = list(
+    echo = TRUE,
+    eval = FALSE
+  ),
+  tablaKable = list(
+    echo = FALSE,
+    eval = TRUE
+  )
+)
+
+source("R/global.R")
 ```
 
-# Trabajo de Sandra
+# Rompiendo mitos: Los accidentes ciclistas en el Perú entre 2011 - 2017 {#ciclistas}
 
-## Bases de datos a usar
+*Sandra Cerna Herrera*
 
 ```{r}
+library(tidyverse)
 library(readxl)
-library(dplyr)
-library(ggplot2)
 library(ggthemes)
 library(haven)
 ```
 
-## A continuación, se han seleccionado solamente las variables relevantes. 
+En el siglo XX, las ciudades experimentaron drásticas transformaciones debido a las formas de transporte y movilización de ese entonces. La gran influencia de los vehículos automotores generó cambios radicales en los espacios de la urbe, específicamente en las calles. Con la masificación del uso de los autos, se empezaron a reducir los espacios para los peatones, no solamente por un tema técnico, sino por la expansión de la misma idea de modernidad vinculada a estos vehículos, de ciudades con ciertas características arquitectónicas e infraestructura intrínsecamente relacionadas con la cultura del automóvil como sinónimo de progreso y desarrollo (Montezuma, 2011).
 
-## Modificación del nombre de una variable:
+En varios países del mundo, esta concepción de diseñar las urbes teniendo como foco al automóvil, ha empezado a cambiar paulativamente en los últimos 40 años y han surgido propuestas de alternativa al auto más sostenibles, menos contaminantes, que permitan reconectar a los habitantes con los espacios de la ciudad de los cuales se los despojó. La bicicleta surge entonces como un medio de transporte que permite dar solución a problemas generados por el uso masivo del automvóvil; sin embargo, este cambio de perspectiva de parte de la ciudadanía y los tomadores de decisión le ha tomado a algunas ciudades entre 20 a 30 años para poder consolidarse. 
 
-En algunos casos, como en la base del año 2012, la variable AT106_17 tenía otro nombre, por un tema de variables adicionales que se incluyeron ese año en la encuesta y que, por ende, cambiaron la numeración secuencial. Es necesario renombrar la variable para poder cruzarla con los demás años. 
+Tal fue el caso de Copenhague (Dinamarca) donde, actualmente, 9 de cada 10 habitantes tiene una bicicleta y los viajes realizados en este medio de transporte suponen 1,2 millones de kilómetros al año (BID, 2020). En esta ciudad, uno de los primeros momentos importantes del inicio de su transformación fue a fines de los años 70, cuando la Federación Danesa de Ciclistas realizó varias manifestaciones para exigir más ciclovías. No obstante, a pesar de haber tenido el apoyo masivo de la ciudadanía, los funcionarios del gobierno local se opusieron rotundamente a esta demanda y el proyecto desarrollado por los mismos ciclistas fue abandonada por razones políticas (Jensen en Dextre et al., 2015). 
+
+En el Perú, las políticas de diseño de las ciudades han estado visiblemente marcadas por la visión del automóvil como sinónimo de desarrollo. En los últimos 20 años, la capital ha sufrido una serie de cambios en su infraestructura erróneamente pensados como una solución al problema de la congestión vehicular, además de implicar sobrecostos y casos de corrupción escandalosos (IDL, 2015). Sumado a lo anterior, el actual sistema de transporte, basado en una red de concesionamiento entre propietarios y operadores, sumado a un gran problema de institucionalidad que es directamente responsabilidad del Estado por la normatividad y legalidad que lo avala (Bielich, 2009), es deficiente en todo sentido, ya sea que se hable de la calidad del servicio, la satisfacción de la demanda o la estabilidad laboral de los trabajadores. 
+
+La bicicleta, así como en otras grandes urbes, es parte de la propuesta de solución para diversos problemas de transporte, ambientales, económicos, de salud e incluso, de ciudadanía y reconexión con el espacio público. En los últimos años, el uso de la bicicleta en Lima y en el Perú ha ido aumentando lentamente. Lamentablemente, a la fecha, no existe data confiable que permita conocer la situación actual de los usuarios de la bicicleta en el Perú. Frente a ese escenario, este proyecto se concibió como una manera de utilizar la información disponible para conocer un poco más sobre los accidentes que involucran a personas en bicicleta.  Además, parte del interés de este proyecto es romper algunos mitos, en particular, el que relaciona a la bicicleta con inseguridad en las calles y mayores probabilidades de sufrir un accidente fatal, y así, poder invitar a más personas a, quizás por primera vez, movilizarse en bicicleta por la ciudad.
+
+## Los datos disponibles sobre la bicicleta en el Perú
+
+Como se mencionó, a la fecha no se cuentan con datos abiertos sobre el uso de la bicicleta en el Perú. Después de varias búsquedas en los portales de transparencia del Estado peruano, se encontraron ciertas variables vinculadas a la bicicleta en el Censo Nacional de Comisarías, consolidado por el Instituto Nacional de Estadística e Informática a partir de información recogida por la Policía Nacional del Perú, entre los años 2011 y el primer semestre de 2017. Se trabajó con dos capítulos, 100 y 200, que contenían las variables relacionadas a los accidentes de tránsito de los reportes de la PNP, específicamente, los que involucraban a una bicicleta. 
+
+El capítulo 100 contiene información relacionada a las circunstancias alrededor de los accidentes. En líneas generales, las variables fueron las mismas a lo largo de los años; sin embargo, hubo ciertas variaciones debido a la adición o supresión de algunas preguntas en el Censo de 2012, 2016 y 2017, que tenían información de 2011, 2015, y 2016 y el primer semestre de 2017, respectivamente. Por tal razón, el proceso para poder realizar un análisis longitudinal a partir de la consolidación de todas las bases implicó revisar las variables una por una y renombrarlas en los casos mencionados. 
 
 ```{r}
-
-base2012 <- read_sav("data/2012_05_CENACOM02_CAP100.sav")
-
-base2012 <- base2012 %>%
-  select(UBIGEO, AT103_A, AT105, AT106_15, AT106_15_CANT, AT108, AT108_1, AT108_2, AT108_3)
-
-base2012 <- base2012 %>%
+base2012 <- read_sav("data/2012_05_CENACOM02_CAP100.sav")%>%
+  select(UBIGEO, AT103_A, AT105, AT106_15, AT106_15_CANT, AT108, AT108_1, AT108_2, AT108_3, AT106_1, AT106_6) %>% 
   rename(
     AT106_17 = AT106_15,
     AT106_17_CANT = AT106_15_CANT
   )
-```
 
-```{r}
+base2013 <- read_sav("data/2013_04_ATCapitulo100.sav") %>%
+  select(UBIGEO, AT103_A, AT105, AT106_17, AT106_17_CANT, AT108, AT108_1, AT108_2, AT108_3, AT106_1, AT106_6)
 
-base2013 <- read_sav("data/2013_04_ATCapitulo100.sav")
+base2014 <- read_sav("data/2014_04_AT_CAP100.SAV") %>%
+  select(UBIGEO, AT103_A, AT105, AT106_17, AT106_17_CANT, AT108, AT108_1, AT108_2, AT108_3, AT106_1, AT106_6)
 
-base2013 <- base2013 %>%
-  select(UBIGEO, AT103_A, AT105, AT106_17, AT106_17_CANT, AT108, AT108_1, AT108_2, AT108_3)
-```
-
-```{r}
-
-base2014 <- read_sav("data/2014_04_AT_CAP100.SAV")
-
-base2014 <- base2014 %>%
-  select(UBIGEO, AT103_A, AT105, AT106_17, AT106_17_CANT, AT108, AT108_1, AT108_2, AT108_3 )
-```
-
-```{r}
-
-base2015 <- read_sav("data/2015_05_AT_Capitulo_100.sav")
-
-base2015 <- base2015 %>%
-select(UBIGEO, AT103_A, AT105, AT106_17, AT106_17_CANT, AT108, AT108_1, AT108_2, AT108_3 )
-
-base2015 <- base2015 %>%
+base2015 <- read_sav("data/2015_05_AT_Capitulo_100.sav") %>%
+  select(UBIGEO, AT103_A, AT105, AT106_17, AT106_17_CANT, AT108, AT108_1, AT108_2, AT108_3, AT106_1, AT106_6) %>%
   mutate(AT103_A = as.character(AT103_A))
-```
 
-## Modificación del nombre de una variable:
+base2016 <- read_sav("data/2016_A_T_Capitulo 100.sav") %>%
+  select(UBIGEO, AT103_A, AT105, AT106_16, AT106_16_CANT, AT108, AT108_1, AT108_2, AT108_3, AT106_1, AT106_6) %>%
+  rename(
+    AT106_17 = AT106_16,
+    AT106_17_CANT = AT106_16_CANT
+  )
 
-En algunos casos, como en la base del año 2016, la variable AT106_17 tenía otro nombre, por un tema de variables adicionales que se incluyeron ese año en la encuesta y que, por ende, cambiaron la numeración secuencial. Es necesario renombrar la variable para poder cruzarla con los demás años.  
-
-```{r}
-
-base2016 <- read_sav("data/2016_A_T_Capitulo 100.sav")
-
-base2016 <- base2016 %>%
-  select(UBIGEO, AT103_A, AT105, AT106_16, AT106_16_CANT, AT108, AT108_1, AT108_2, AT108_3 )
-
-base2016 <- base2016 %>%
+base2017 <- read_sav("data/2017_A_T_Capitulo 100.sav") %>%
+  select(UBIGEO, AT103_A, AT105, AT106_16, AT106_16_CANT, AT108, AT108_1, AT108_2, AT108_3, AT106_1, AT106_6) %>%
   rename(
     AT106_17 = AT106_16,
     AT106_17_CANT = AT106_16_CANT
   )
 ```
 
-## Modificación del nombre de una variable:
-
-En algunos casos, como en la base del año 2017, la variable AT106_17 tenía otro nombre, por un tema de variables adicionales que se incluyeron ese año en la encuesta y que, por ende, cambiaron la numeración secuencial. Es necesario renombrar la variable para poder cruzarla con los demás años.  
-
-```{r}
-
-base2017 <- read_sav("data/2017_A_T_Capitulo 100.sav")
-
-base2017 <- base2017 %>%
-  select(UBIGEO, AT103_A, AT105, AT106_16, AT106_16_CANT, AT108, AT108_1, AT108_2, AT108_3 )
-
-base2017 <- base2017 %>%
-  rename(
-    AT106_17 = AT106_16,
-    AT106_17_CANT = AT106_16_CANT
-  )
-```
-
-## Creación de la base general 2012-2017
+Con la verificación de las variables del capítulo 100, se consolidaron las bases de los Censos, con información sobre los accidentes de tránsito registrados por la PNP entre 2011 y el primer semestre de 2017. Para el tratamiento de datos, fue necesaria la conversión de las columnas "labelled" a "factor", debido a los distintos formatos de ciertas variables en años diferentes y así, se agrupó en una sola base denominada "base general". 
 
 ```{r}
 basegeneral <- bind_rows(
@@ -107,80 +85,90 @@ basegeneral <- bind_rows(
  base2015,
  base2016,
  base2017
+) %>% 
+  as_factor()
+```
+
+Por otra parte, el capítulo 200 contiene información sobre las personas involucradas en los accidentes. Revisando las bases de los Censos, en este caso no se tuvieron que modificar los nombres de las variables a utilizar; sin embargo, para identificar la fecha, se creó una nueva variable que contenía el año en el cual se recogieron los datos, según el Censo (excepto para la base más reciente correspondiente a 2016 y el primer semestre del 2017). De la misma manera que en la base general creada para el capítulo 100, para el capítulo 200 también se convirtieron todas las columnas a "factor" para poder consolidarlas en una sola base que se nombró como "heridos". 
+
+```{r}
+base2012_200 <- read_sav("data/2012_06_CENACOM02_CAP200.sav") %>% 
+  select(UBIGEO, IP201, IP202, IP203, IP204, IP205, IP206) %>%
+  mutate(IP203 = as.character(IP203), 
+         ANIO = 2011) %>% 
+  as_factor()
+
+base2013_200 <- read_sav("data/2013_05_ATCapitulo200.sav")%>%
+  select(UBIGEO, IP201, IP202, IP203, IP204, IP205, IP206) %>%
+   mutate(IP206 = as_factor(IP206),
+         ANIO = 2012) %>% 
+  as_factor()
+
+base2014_200 <- read_sav("data/2014_05_AT_CAP200.SAV")%>%
+  select(UBIGEO, IP201, IP202, IP203, IP204, IP205, IP206) %>%
+  mutate(ANIO = 2013) %>% 
+  as_factor()
+
+base2015_200 <- read_sav("data/2015_06_AT_Capítulo_200.sav") %>%
+  select(UBIGEO, IP201, IP202, IP203, IP204, IP205, IP206) %>% 
+  mutate(ANIO = 2014) %>% 
+  as_factor()
+
+base2016_200 <- read_sav("data/2016_A_T_Capitulo 200.sav") %>%
+  select(UBIGEO, IP201, IP202, IP203, IP204, IP205, IP206) %>% 
+  mutate(ANIO = 2015) %>% 
+  as_factor()
+
+base2017_200 <- read_sav("data/2017_A_T_Capitulo 200.sav") %>%
+  select(UBIGEO, IP201, IP202, IP203, IP204, IP205, IP206, ANIO) %>% 
+  as_factor()
+```
+
+```{r}
+heridos <- bind_rows(
+ base2012_200,
+ base2013_200,
+ base2014_200,
+ base2015_200,
+ base2016_200,
+ base2017_200
 )
 ```
 
-## Conversión de las columnas "labelled" a "factor"
+## Bikes vs. Cars: los accidentes de tránsito en el Perú
 
-```{r}
-basegeneral <- as_factor(basegeneral)
+Una primera aproximación a los accidentes de tránsito nos indica que la cifra total ha aumentado en general a lo largo del tiempo, desde el 2011 hasta 2014, manteniéndose uniforme en los años siguientes hasta el primer semestre de 2017. 
+
+```{r accidentesanual, opts.label = "tablaOriginal"}
+basegeneral %>%
+  count(AT103_A)
 ```
 
-```{r}
-head(basegeneral,20)
+```{r accidentesanual2, opts.label = "tablaKable"}
+basegeneral %>%
+  count(AT103_A) %>% 
+  default_tbl("Cantidad de accidentes de tránsito por año")
 ```
+A pesar que el número del total de accidentes haya aumentado y luego se haya mantenido en el tiempo, si analizamos la información sobre los accidentes que involucraron a una bicicleta, los datos muestran que estos accidentes se han reducido anualmente.
 
-## Total de accidentes registrados por la PNP, desde 2012 al primer semestre del 2017
-
-<!-- Este código será necesario cambiarlo. Jamás debes terminar un encadenamiento (%>%) con un llamado a print(). Los llamados a print() no se hacen en la misma operación en la que creas un objeto. Fíjate que pasa si dejas de usar group_by() en este bloque. -->
-
-```{r}
-accidentesgeneral <- basegeneral %>%
-  count(AT103_A) %>%
-  group_by(AT103_A) %>%
-  print(accidentesgeneral)
-```
-
-## Total de accidentes que involucraron una bicicleta, desde 2012 al primer semestre del 2017
-
-<!-- idem -->
-
-```{r}
-accidentesbici <- basegeneral %>%
+```{r, opts.label = "tablaOriginal"}
+basegeneral %>%
   filter(AT106_17 == "BICICLETA") %>%
-  count(AT103_A, AT106_17)%>%
-  group_by(AT103_A) %>%
-  print(accidentesbici)
+  count(AT103_A, AT106_17)
 ```
 
-## Gráfico del total de accidentes de tránsito que involucraron a una bicicleta, desde 2012 hasta el primer semestre de 2017
-
-
-<!-- accidentesbici ya contenía los resultados  que necesitabas para el gráfico. No era necesario volver a usar la operacion con la que fue creado -->
-
-<!-- Si el único valor presente en AT106_17 será "BICICLETA", ya no necesitas mapear el color a esa variable. -->
-
-```{r}
-accidentesbici <- accidentesbici %>%
-  ggplot(aes(AT103_A,
-             n,
-             group = AT106_17)) +
-  geom_line()
-
-accidentesbici +
-  theme_clean() +
-  labs(
-    title = "Accidentes que involucraron a una bicicleta, desde 2012 hasta el primer semestre de 2017",
-    subtitle = "Número de accidentes registrados por la PNP",
-    caption = "Fuente: INEI - Censo Nacional de Comisarías 2012-2017",
-    x = "Años",
-    y = "Cantidad de accidentes"
-  )
+```{r, opts.label = "tablaKable"}
+basegeneral %>%
+  filter(AT106_17 == "BICICLETA") %>%
+  count(AT103_A, AT106_17) %>% 
+  default_tbl("Cantidad de accidentes de tránsito con bicicletas por año")
 ```
 
-## Gráfico del total de accidentes de tránsito, desde 2012 hasta el primer semestre de 2017
+Al realizar la comparación entre accidentes que involucraron una bicicleta frente a todos los demás accidentes, esta tendencia se identifica claramente. Para efectos de la visualización del gráfico, se ha optado por utilizar una escala logarítmica de 10.
 
-<!-- ojo: este código no genera bicicleta vs total. está generando bicicleta vs no bicicleta.
-Si quieres bicicleta vs total deberías juntar con bind_rows() tu primer accidentes general con accidentesbici-->
-
-<!-- nuevamente, revisa qué pasa si no usas group_by() aquí -->
-
-<!-- puedes usar una escala especial para el eje Y si quieres comparar líneas con diferencias muy extremas. aquí agregué scale_y_log10() a tu gráfico para pedirle que Y use una escala logarítimica de base 10. Esto tienes que dejarlo bien claro en la explicación de tu código y del gráfico porque puede prestar a confusión. -->
-
-```{r}
+```{r, fig.cap="Cantidad de accidentes de tránsito, según año y tipo de vehículo"}
 accidentesgeneral <- basegeneral %>%
   count(AT103_A, AT106_17) %>%
-  group_by(AT103_A) %>%
     ggplot(aes(AT103_A,
                 n,
                color = AT106_17, 
@@ -191,10 +179,214 @@ accidentesgeneral +
   scale_y_log10()+
   theme_clean() +
   labs(
-    title = "Total de accidentes de tránsito, desde 2012 hasta el primer semestre de 2017",
-    subtitle = "Número de accidentes registrados por la PNP",
+    title = "Total de accidentes de tránsito",
+    subtitle = "Accidentes registrados por la PNP (Enero 2011 - Junio 2017)",
     caption = "Fuente: INEI - Censo Nacional de Comisarías 2012-2017",
     x = "Años",
-    y = "Cantidad de accidentes"
+    y = "Número de accidentes",
+    color = "Vehículo involucrado"
   )
 ```
+
+Además, la información registrada por la PNP incluye las consecuencias de los accidentes. Con estos datos, es posible observar tres situaciones: en el caso que el accidente haya tenido víctimas fatales; donde el resultado haya sido no fatal, y donde solo se hayan consignado daños materiales.  
+
+```{r, fig.cap="Cantidad de accidentes que involucraron una bicicleta, según año y consecuencia del accidente"}
+consecuenciasbici <- basegeneral %>% 
+  filter(AT106_17 == "BICICLETA") %>% 
+  ggplot(aes(AT103_A, fill = AT108)) +
+  geom_bar()
+
+consecuenciasbici +
+  theme_clean() +
+  labs(
+    title = "Consecuencias de los accidentes que involucraron una bicicleta",
+    subtitle = "Accidentes registrados por la PNP (Enero 2011 - Junio 2017)",
+    caption = "Fuente: INEI - Censo Nacional de Comisarías 2012-2017",
+    x = "Años",
+    y = "Número de accidentes",
+    fill = "Consecuencia del accidente"
+    ) 
+```
+
+Al observar el gráfico anterior, se encuentra que, además de la reducción progresiva de los accidentes cada año, la consecuencia es no fatal en la mayoría de casos registrados. 
+Se realizó el mismo proceso para el caso de los automóviles, para poder conocer cómo era la distribución de las consecuencias de los accidentes en tal tipo de vehículo. 
+
+```{r, fig.cap="Cantidad de accidentes que involucraron un automóvil, según año y consecuencia del accidente"}
+consecuenciasauto <- basegeneral %>% 
+  filter(AT106_1 == "AUTOMÓVIL") %>% 
+  ggplot(aes(AT103_A, fill = AT108)) +
+  geom_bar()
+
+consecuenciasauto +
+  theme_clean() +
+  labs(
+    title = "Consecuencias de los accidentes que involucraron un automóvil",
+    subtitle = "Accidentes registrados por la PNP (Enero 2011 - Junio 2017)",
+    caption = "Fuente: INEI - Censo Nacional de Comisarías 2012-2017",
+    x = "Año",
+    y = "Número de accidentes",
+    fill = "Consecuencia del accidente"
+  )
+```
+
+A partir del gráfico obtenido, se encuentra que, para el caso de automóviles, los números se concentran en dos casos: los resultados no fatales y donde solo hubo daños materiales. 
+La diferencia en relación con los resultados obtenidos en el caso de la bicicleta  podría deberse a la vulnerabilidad de una persona en un ciclo frente a un automóvil que cuenta con sistemas de protección justamente por la velocidad que puede alcanzar este tipo de vehículos automotores y a las graves consecuencias en el caso de un accidente automovilístico. 
+
+## ¿Dónde ocurren los accidentes en bicicleta? 
+
+Otro aspecto importante en relación a los accidentes es dónde ocurren. Según el Ministerio de Transportes y Comunicaciones (2021), el 70% de accidentes se concentran en Lima Metropolitana y el Callao. Para conocer cuál es la situación en relación a las personas que se movilizan en bicicleta a nivel distrital, se ha utilizado el ubigeo, que corresponde a la ubicación de las comisarías desde donde se recabó la información. 
+
+Para ello, se combinó la base general con una lista de ubigeo que contenía la numeración correspondiente y el detalle de los nombres de cada departamento, provincia y distrito. 
+
+```{r}
+UBIGEO <- read_excel("data/UBIGEO.xlsx")
+basegeneral <- left_join(UBIGEO, basegeneral, by = "UBIGEO")
+```
+
+La información que se busca conocer está en el detalle de los distritos de la provincia de Lima, considerando todos los años recabados, para obtener una mirada longitudinal de los accidentes que involucraron una bicicleta durante el 2011 y el primer semestre de 2017 de manera acumulada. 
+
+```{r, opts.label = "tablaOriginal"}
+basegeneral %>% 
+  filter(PROVINCIA == "Lima" & AT106_17 == "BICICLETA") %>%
+  count(DISTRITO)  %>% 
+  arrange(-n)
+```
+
+```{r, opts.label = "tablaKable"}
+basegeneral %>% 
+  filter(PROVINCIA == "Lima" & AT106_17 == "BICICLETA") %>%
+  count(DISTRITO)  %>% 
+  arrange(-n) %>% 
+  default_tbl("Cantidad de accidentes de tránsito con bicicletas en Lima Metropolitana, por distrito")
+```
+
+Uno de los principales hallazgos es que hay dos distritos en los cuales no se consignó ningún accidente que involucrara una bicicleta: Punta Negra y Santa Rosa. Ambos distritos tienen una baja densidad poblacional, además de ser balnearios que, en su mayoría, son concurridos en épocas de verano, lo que podría ser una razón para que no haya ningún registro en todos esos años. 
+
+Por otra parte, según la tabla, Cercado de Lima y San Juan de Lurigancho comparten la mayor cantidad de accidentes de ciclistas, con 57 incidencias cada uno, seguido de Miraflores, con 38 casos. Luego está Los Olivos, con 34 accidentes y Chorrillos, con 32. 
+
+```{r, fig.cap="Cantidad de accidentes que involucraron una bicibleta en cinco distritos de Lima Metropolitana, por consecuencia del accidente"}
+limabici <- basegeneral %>% 
+ filter(AT106_17 == "BICICLETA")%>%
+ filter(
+    `DISTRITO` %in% c("Lima", "San Juan de Lurigancho", "Miraflores", "Los Olivos", "Chorrillos")
+  ) %>%
+  ggplot(aes(y = DISTRITO, fill = AT108)) +
+  geom_bar()
+
+limabici +
+  theme_clean() +
+  labs(
+    title = "Consecuencias de accidentes en Lima\nque involucraron una bicicleta",
+    subtitle = "Accidentes registrados por la PNP (Enero 2011 - Junio 2017)",
+    caption = "Fuente: INEI - Censo Nacional de Comisarías 2012-2017",
+    x = "Número de accidentes",
+    y = "Distritos de Lima con mayor número de accidentes ciclistas",
+    fill = "Consecuencia del accidente"
+  )
+```
+
+Al observar el gráfico con las consecuencias de los accidentes, ocurridos en estos 5 distritos con una mayor incidencia en Lima, encontramos que en su mayoría todos tuvieron alguna persona herida pero solo hubo una víctima mortal. 
+
+## ¿Qué ocurre con las y los ciclistas accidentados?
+
+En relación a las y los ciclistas involucrados en los accidentes durante 2011 y el primer semestre de 2017, se encontró la siguiente información: 
+
+```{r, opts.label = "tablaOriginal"}
+heridos %>% 
+  filter(IP201 == "Ciclista") %>%
+  count(IP204)
+```
+
+```{r, opts.label = "tablaKable"}
+heridos %>% 
+  filter(IP201 == "Ciclista") %>%
+  count(IP204) %>% 
+  default_tbl("Cantidad de ciclistas según condición de la persona involucrada")
+```
+
+En todo ese tiempo, hubo más de 3500 ciclistas heridos y 351 ilesos. La cifra que resalta es la de ciclistas fallecidos (217), es decir, un promedio de 31 muertes al año, ya que es una cifra que difiere de lo reportado por la División de Accidentes de Tránsito de la PNP. A fines de diciembre de 2020, la PNP resaltó que del año anterior a dicho año, se duplicó el número de accidentes fatales de cicilistas, de 8 a 15 (Gestión, 2020). 
+
+```{r, fig.cap="Cantidad de ciclistas accidentados por condición de la persona involucrada"}
+heridosbici <- heridos %>%
+  filter(IP201 == "Ciclista") %>% 
+  count(ANIO, IP204) %>%
+    ggplot(aes(ANIO,
+                n,
+               color = IP204, 
+               group = IP204)) +
+  geom_line()
+
+heridosbici +
+  theme_clean() +
+  labs(
+    title = "Total de ciclistas involucrados en accidentes",
+    subtitle = "Accidentes registrados por la PNP, entre 2011 y el primer semestre de 2017",
+    caption = "Fuente: INEI - Censo Nacional de Comisarías 2012-2017",
+    x = "Años",
+    y = "Número de ciclistas",
+    color = "Condición de la persona involucrada"
+  )
+```
+
+Al realizar el análisis longitudinal, se observa, según el gráfico anterior, que el número de ciclistas para todos los casos (fallecidos, heridos, ilesos) se ha reducido anualmente. Este resultado se corresponde con el hallazgo que el número de accidentes que involucraron una bicicleta también se ha reducido cada año.  
+
+```{r, fig.cap="Cantidad de ciclistas involucrados en accidentes, según año y sexo"}
+heridos_s <- heridos %>%
+  filter(IP201 == "Ciclista") %>%
+  count(ANIO, IP202) %>%
+  group_by(ANIO) %>%
+  mutate(porcentaje = n / sum(n) * 100) %>%
+  ggplot(aes(ANIO, porcentaje, color = IP202, group = IP202)) +
+  geom_line()
+
+heridos_s +
+  theme_clean() +
+  labs(
+    title = "Sexo de ciclistas involucrados en accidentes",
+    subtitle = "Accidentes registrados por la PNP (Enero 2011 - Junio 2017)",
+    caption = "Fuente: INEI - Censo Nacional de Comisarías 2012-2017",
+    x = "Años",
+    y = "Distribución porcentual",
+    color = "Sexo",
+    shape = "Sexo"
+  )
+```
+
+Tomando en cuenta el sexo de las y los ciclistas involucrados en los accidentes, se encontró que, en la mayoría de años para el periodo de tiempo abarcado, más del 80% eran hombres. En algunos años, como 2012, 2013 y 2015, el porcentaje de hombres ciclistas superó el 90% del total, mientras que, para el caso de mujeres ciclistas involucradas en accidentes, el porcentaje fue menor al 11%. Para el último año registrado (el primer semestre de 2017), no obstante, el porcentaje de mujeres ciclistas aumentó a 16% y, a su vez, se redujo el de hombres. 
+
+## Conclusiones 
+
+Una de las principales conclusiones es que el número total de accidentes que involucraron personas en bicicletas se redujo de manera constante cada año. El mito de que montar bicicleta es peligroso es falso: cada año es más seguro ser ciclista. Una de los factores explicativos es que cada año hay más personas que se movilizan en bicicleta; sin embargo, a la fecha, no existen bases de datos confiables que reporten el número de ciclistas de forma anual, por lo que es una hipótesis que queda pendiente de explorar. 
+
+Esta correlación de mayor número de ciclistas con menores accidentes ya ha sido corroborada en otros países desde hace más de una década (The Guardian, 2004). Incluso, este efecto positivo a corto plazo ha sido confirmado en un período particular del año, como los meses de verano, cuando la cantidad de ciclistas en las calles incrementa  (Fyhri et al., 2017). 
+
+Una segunda conclusión es que si bien los resultados en su mayoría no fueron fatales durante el período de años abarcado, sí resultó en personas heridas. Esto podría explicarse por la vulnerabilidad que enfrenta una persona que se moviliza en bicicleta frente al impacto de vehículos automotores, sobre todo, cuando estos se movilizan a gran velocidad. El mito de que montar bicicleta puede resultar fatal es falso, ya que la cantidad de casos en los que ha habido fallecidos en accidentes donde se involucró una bicicleta es mínima. 
+
+
+Por otra parte, en relación a la localización del mayor número de accidentes que involucraron ciclistas, el número se concentra en la ciudad de Lima y el hallazgo fue que, entre 2011 y el primer semestre de 2017, Cercado de Lima y San Juan de Lurigancho fueron los dos distritos con la mayor cantidad de accidentes. Podrían encontrarse algunos factores explicativos considerando la carencia (en ese período) de infraestructura ciclista frente a los viajes realizados de forma diaria, no obstante, como se mencionó anteriormente, no existen otras bases de datos con información sobre ciclistas. 
+
+Lamentablemente, al parecer, ya no se habrían realizado posteriores Censos de Comisarías para la segunda mitad de 2017 y los siguientes años, por lo que la información con la que cuenta la PNP en relación a los accidentes de tránsito no está disponible como datos abiertos. En el contexto actual, durante la pandemia del COVID-19, ha aumentado el número de personas que se movilizan en bicicleta a nivel mundial. Se ha transferido presupuesto a diversas Municipalidades en el Perú (tanto en la capital como en otras ciudades) para infraestructura ciclista, frente a este incremento de ciclistas. Frente a este escenario de cambio, la creación de bases de datos se convierte en una necesidad urgente, que permitiría, tanto a los políticos, técnicos, investigadores y organizaciones, conocer la situación real de nuestras ciudades para llevar a cabo las acciones más adecuadas para garantizar las condiciones de seguridad para todos los tipos de ciclistas que existen en el Perú.  
+
+
+## Bibliografía
+
+BID. (2020). *Transporte urbano sostenible: ¿qué podemos aprender de Copenhague?*. https://bit.ly/3bxk1tI 
+
+Bielich, C. (2009). *La guerra del centavo: una mirada actual al transporte público de Lima*. Instituto de Estudios Peruanos. 
+
+Dextre, J.; Hughes, M. & Bech, L. (eds.). (2015). *Ciclistas y ciclismo alrededor del mundo*. Pontificia Universidad Católica del Perú.  
+
+Fyhria, A.; Sundfør, H.B; Bjørnskau, T. & Laureshyn, A. (2017). *Safety in numbers for cyclists—conclusions from a multidisciplinary study of seasonal change in interplay and conflicts*. https://doi.org/10.1016/j.aap.2016.04.039 
+
+Gestión. (2020). *Muertes de ciclistas en Perú casi se duplicaron en el 2020 por la pandemia*. https://bit.ly/2NoWHoO
+
+IDL Reporteros. (2015). *'Bypaseo' de sobrecostos* https://bit.ly/3cipYtU 
+
+Instituto Nacional de Estadística e Informática. (2021). *Censo Nacional de Comisarías 2012, 2013, 2014, 2015, 2016, 2017.* https://bit.ly/3bPM6MW 
+
+Ministerio de Transportes y Comunicaciones. (2021). *Seguridad vial*. https://bit.ly/38IMmvf 
+
+Montezuma, R. (2011). *Ciudadanos, calles y ciudades: Las Américas unidas por una ciclovía.* Universidad del Rosario, Fundación Ciudad Humana y Organización Panamericana de la Salud.
+
+The Guardian. (2009). *More cyclists means fewer accidents, says report*. https://bit.ly/3cZ13vP
+

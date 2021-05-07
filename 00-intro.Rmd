@@ -1,6 +1,28 @@
-# Introducción {#intro}
+# ¿Por qué Rmarkdown? {#intro}
 
+*Samuel Calderon Serrano*
 
+Existen distintas maneras de analizar datos. Si eres una persona que ha realizado esta tarea alguna vez, es muy probable que hayas utilizado una hoja de cálculo, como Microsoft Excel. En muchos casos, realizarlo de esta manera es suficiente, y existen formas sencillas de sacarle mucho provecho a los datos usando una rutina de "hacer click", "jalar" y "arrastrar". Las hojas de cálculo, además, permiten de manera sencilla ver cómo nuestros datos van cambiando según las modificaciones que les vamos haciendo.
 
-Pueden encontrar el repostitorio de este libro digital en <https://github.com/calderonsamuel/grupo_2021_enero_febrero->.
+Llegando a cierto punto, es posible que hayas necesitado aprender a usar funciones como `PROMEDIO`, `SUMAR.SI`, `CONTAR.SI`, `BUSCARV`, `CONCATENAR`, etc. Además de eso, has necesitado en algún momento realizar gráficos de barras, líneas o de "pie" para representar tus datos. ¿Cómo lo hiciste? Probablemente, hayas ido agregando "hojas" a tu documento en las que vas creando tus cuadros o gráficos.
+
+Una vez que tuviste todo esto, muy probablemente hayas necesitado armar un informe escrito, o reporte, en el que presentas cuadros, gráficos y cierto texto que contextualice la información que estás presentando. Probablemente, tu flujo de trabajo para esto haya sido copiar y pegar tus cuadros o gráficos en un documento de texto, tipo Microsoft Word. Hasta este punto, parece que todo va bien.
+
+Llega el momento en que por alguna razón, el conjunto de datos usado para el análisis sufre cambios, ya sea porque se decidió incluir más observaciones, usar datos actualizados, o porque simplemente hay datos nuevos que requieren de un proceso de análisis muy similar al que ya se utilizó. También puede ocurrir que después de varias semanas de concluido el análisis y el informe, se requiera repasar el método utilizado para llegar a las conclusiones mostradas. Llegado a este punto, incluso el mismo autor del informe requerirá esfuerzos significativos para *reproducir* la metodología utilizada. ¿Qué pasa cuando las tareas de análisis de los mismos datos son asignadas a una nueva persona? ¿Podemos asumir con confianza que las hojas de cálculo que contiene el análisis anterior serán un insumo útil para esta nueva persona?
+
+Utilizar R Markdown puede ayudar a reducir los esfuerzos necesarios para la *reproducibilidad* del análisis de datos al mínimo. Un documento de este tipo permite combinar:
+
+1. Texto en prosa
+2. Código
+3. Resultados del código
+
+El texto en prosa es el texto común y corriente que se usa en todos los documentos que conocemos. Es el texto que sirve para explicar una metodología, interpretar gráficos o cuadros, describir un proceso, desarrollar un argumento, etc. En fin, todo aquello que pueda ser redactado.
+
+El código es el conjunto de instrucciones que se le da a la computadora para que realice los procedimientos que necesitamos. En el contexto de un análisis de datos, comúnmente consistirá en indicar un cálculo a través de algún tipo de sintaxis. En el desarrollo de los artículos de este libro digital se utilizó el lenguaje estadístico R, aprovechando el conjunto de funciones de la colección `tidyverse`.
+
+Los resultados del código, como dice su nombre, permiten mostrar el producto de los cálculos que hemos realizado. Comúnmente, nos referimos a cuadros  y gráficos. Queda siempre a criterio del analista de datos elegir el tipo de resultado que mejor permita comunicar sus hallazgos.
+
+Todo esto significa que *en un mismo documento* se consigue obtener la descripción de un análisis, que puede incluir las preguntas de investigación; la descripción del conjunto (o conjuntos) de datos utilizados en el proceso de responder las preguntas; la metodología utilizado explicada en texto y transparentada con código; los resultados del análisis de datos; y las conclusiones alcanzadas. 
+
+Pueden encontrar el repositorio de este libro digital en <https://github.com/calderonsamuel/grupo_2021_enero_febrero->.
 
